@@ -1,0 +1,65 @@
+aid: manychat
+name: ManyChat
+description: >-
+  ManyChat is a messenger marketing platform that enables businesses to build
+  automated conversations and chat marketing flows across Instagram Direct
+  Messages, Facebook Messenger, WhatsApp, TikTok, and SMS. It provides a
+  visual flow builder, audience segmentation, broadcasts, and integrations
+  with ecommerce and CRM tools to drive engagement, lead capture, and sales.
+  The ManyChat API allows programmatic access to subscribers, custom fields,
+  flows, and messaging using API key (Bearer token) authentication.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Chat Marketing
+  - Messenger Marketing
+  - Conversational Commerce
+  - Marketing Automation
+  - Instagram
+  - WhatsApp
+  - Facebook Messenger
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/manychat/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: manychat:rest-api
+    name: ManyChat REST API
+    description: >-
+      REST API for managing subscribers, custom fields, tags, flows, and
+      sending messages in ManyChat across Instagram, Messenger, WhatsApp, and
+      SMS. Authentication uses an API Key generated from the page Settings to
+      API screen, passed as a Bearer token in the Authorization header.
+      Interactive documentation is available via Swagger.
+    humanURL: https://api.manychat.com/swagger
+    baseURL: https://api.manychat.com
+    tags:
+      - Chat Marketing
+      - Messenger Marketing
+      - Subscribers
+      - Flows
+      - Messaging
+    properties:
+      - type: Documentation
+        url: https://api.manychat.com/swagger
+      - type: Swagger
+        url: https://api.manychat.com/swagger
+      - type: Authentication
+        url: https://help.manychat.com/hc/en-us/articles/14959510331420
+      - type: Developer Program
+        url: https://help.manychat.com/hc/en-us/articles/14281299586972
+common:
+  - type: Website
+    url: https://manychat.com
+  - type: Documentation
+    url: https://api.manychat.com/swagger
+  - type: Pricing
+    url: https://manychat.com/pricing
+  - type: Sign Up
+    url: https://manychat.com/signup
+  - type: Help Center
+    url: https://help.manychat.com
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
