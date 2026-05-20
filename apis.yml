@@ -50,6 +50,10 @@ apis:
       - type: Developer Program
         url: https://help.manychat.com/hc/en-us/articles/14281299586972
 common:
+  - type: GitHubOrganization
+    url: https://github.com/manychat
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/manychat
   - type: Website
     url: https://manychat.com
   - type: Documentation
