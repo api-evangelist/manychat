@@ -1,0 +1,554 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ManyChat API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get connected page info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getInfo"
+          },
+          "docs": "Rate limit: 100 queries per second."
+        },
+        {
+          "info": {
+            "name": "Create a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second."
+        },
+        {
+          "info": {
+            "name": "List page tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getTags"
+          },
+          "docs": "List page tags"
+        },
+        {
+          "info": {
+            "name": "Remove a tag by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/removeTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a tag by ID"
+        },
+        {
+          "info": {
+            "name": "Remove a tag by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/removeTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a tag by name"
+        },
+        {
+          "info": {
+            "name": "List growth widgets (deprecated; use getGrowthTools)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getWidgets"
+          },
+          "docs": "List growth widgets (deprecated; use getGrowthTools)"
+        },
+        {
+          "info": {
+            "name": "List growth tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getGrowthTools"
+          },
+          "docs": "List growth tools"
+        },
+        {
+          "info": {
+            "name": "List flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getFlows"
+          },
+          "docs": "List flows"
+        },
+        {
+          "info": {
+            "name": "List custom user fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getCustomFields"
+          },
+          "docs": "List custom user fields"
+        },
+        {
+          "info": {
+            "name": "Create a custom user field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createCustomField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom user field"
+        },
+        {
+          "info": {
+            "name": "List One-Time Notification topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getOtnTopics"
+          },
+          "docs": "List One-Time Notification topics"
+        },
+        {
+          "info": {
+            "name": "List bot fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getBotFields"
+          },
+          "docs": "List bot fields"
+        },
+        {
+          "info": {
+            "name": "Create a bot field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createBotField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a bot field"
+        },
+        {
+          "info": {
+            "name": "Set a bot field value by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a bot field value by ID"
+        },
+        {
+          "info": {
+            "name": "Set a bot field value by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotFieldByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a bot field value by name"
+        },
+        {
+          "info": {
+            "name": "Set multiple bot fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set multiple bot fields"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send content to a subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendContent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate limit: 25 queries per second."
+        },
+        {
+          "info": {
+            "name": "Send content using a user_ref",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendContentByUserRef",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send content using a user_ref"
+        },
+        {
+          "info": {
+            "name": "Send a flow to a subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendFlow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate limit: 20 queries per second, 100 queries per given subscriber per hour."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriber",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get subscriber info by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/getInfo",
+            "params": [
+              {
+                "name": "subscriber_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get subscriber info by ID"
+        },
+        {
+          "info": {
+            "name": "Search subscribers by full name (max 100 results)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search subscribers by full name (max 100 results)"
+        },
+        {
+          "info": {
+            "name": "Get subscriber info by user_ref",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/getInfoByUserRef",
+            "params": [
+              {
+                "name": "user_ref",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get subscriber info by user_ref"
+        },
+        {
+          "info": {
+            "name": "Find subscribers by custom field value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findByCustomField"
+          },
+          "docs": "Find subscribers by custom field value"
+        },
+        {
+          "info": {
+            "name": "Find subscriber by email or phone (set one)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findBySystemField",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Find subscriber by email or phone (set one)"
+        },
+        {
+          "info": {
+            "name": "Add a tag to a subscriber by tag ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/addTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a tag to a subscriber by tag ID"
+        },
+        {
+          "info": {
+            "name": "Add a tag to a subscriber by tag name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/addTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a tag to a subscriber by tag name"
+        },
+        {
+          "info": {
+            "name": "Remove a tag from a subscriber by tag ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/removeTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a tag from a subscriber by tag ID"
+        },
+        {
+          "info": {
+            "name": "Remove a tag from a subscriber by tag name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/removeTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a tag from a subscriber by tag name"
+        },
+        {
+          "info": {
+            "name": "Set a custom field value by field ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a custom field value by field ID"
+        },
+        {
+          "info": {
+            "name": "Set multiple custom field values",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set multiple custom field values"
+        },
+        {
+          "info": {
+            "name": "Set a custom field value by field name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomFieldByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a custom field value by field name"
+        },
+        {
+          "info": {
+            "name": "Verify a subscriber from a Facebook signed_request payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/verifyBySignedRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a subscriber from a Facebook signed_request payload"
+        },
+        {
+          "info": {
+            "name": "Create a subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/createSubscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a subscriber"
+        },
+        {
+          "info": {
+            "name": "Update a subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/updateSubscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a subscriber"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a single-use link for a template (Profile API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/user/template/generateSingleUseLink",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a single-use link for a template (Profile API)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
