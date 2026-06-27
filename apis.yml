@@ -60,7 +60,7 @@ common:
     url: https://api.manychat.com/swagger
   - type: Pricing
     url: https://manychat.com/pricing
-  - type: SignUp
+  - type: Signup
     url: https://manychat.com/signup
   - type: Help Center
     url: https://help.manychat.com
