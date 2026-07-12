@@ -50,6 +50,12 @@ apis:
       - type: Developer Program
         url: https://help.manychat.com/hc/en-us/articles/14281299586972
 common:
+  - type: VulnerabilityDisclosure
+    url: security/manychat-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/manychat-domain-security.yml
+  - type: Authentication
+    url: authentication/manychat-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/manychat
   - type: LinkedIn

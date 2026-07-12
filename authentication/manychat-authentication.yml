@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/manychat-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token of the form `Bearer <page-id>:<api-key>` issued from the ManyChat
+    dashboard.
+  sources:
+  - openapi/manychat-openapi.yml
