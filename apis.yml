@@ -50,6 +50,8 @@ apis:
       - type: Developer Program
         url: https://help.manychat.com/hc/en-us/articles/14281299586972
 common:
+  - type: AgenticAccess
+    url: agentic-access/manychat-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/manychat-vulnerability-disclosure.yml
   - type: DomainSecurity
