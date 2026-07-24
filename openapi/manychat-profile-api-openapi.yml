@@ -1,0 +1,38 @@
+openapi: 3.1.0
+info:
+  title: ManyChat Page Profile API
+  description: The ManyChat REST API exposes Page, Sending, and Subscriber operations for Facebook Messenger automation (a separate Profile API endpoint is available for white-label flows). Endpoints derived from the public Swagger document served at https://api.manychat.com/swagger. Authentication is via a Bearer token of the form `Bearer <page-id>:<api-key>` generated in the ManyChat dashboard.
+  version: beta
+  contact:
+    name: ManyChat
+    url: https://api.manychat.com/swagger
+servers:
+- url: https://api.manychat.com
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Profile
+  description: White-label profile/template management
+paths:
+  /user/template/generateSingleUseLink:
+    post:
+      tags:
+      - Profile
+      summary: Generate a single-use link for a template (Profile API)
+      operationId: generateTemplateSingleUseLink
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Single-use link
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token of the form `Bearer <page-id>:<api-key>` issued from the ManyChat dashboard.

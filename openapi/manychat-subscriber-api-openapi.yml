@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: ManyChat Page Subscriber API
+  description: The ManyChat REST API exposes Page, Sending, and Subscriber operations for Facebook Messenger automation (a separate Profile API endpoint is available for white-label flows). Endpoints derived from the public Swagger document served at https://api.manychat.com/swagger. Authentication is via a Bearer token of the form `Bearer <page-id>:<api-key>` generated in the ManyChat dashboard.
+  version: beta
+  contact:
+    name: ManyChat
+    url: https://api.manychat.com/swagger
+servers:
+- url: https://api.manychat.com
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Subscriber
+  description: Lookup and manage subscribers
+paths:
+  /fb/subscriber/getInfo:
+    get:
+      tags:
+      - Subscriber
+      summary: Get subscriber info by ID
+      operationId: getSubscriberInfo
+      parameters:
+      - name: subscriber_id
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Subscriber info
+  /fb/subscriber/findByName:
+    get:
+      tags:
+      - Subscriber
+      summary: Search subscribers by full name (max 100 results)
+      operationId: findSubscriberByName
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscribers
+  /fb/subscriber/getInfoByUserRef:
+    get:
+      tags:
+      - Subscriber
+      summary: Get subscriber info by user_ref
+      operationId: getSubscriberByUserRef
+      parameters:
+      - name: user_ref
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscriber info
+  /fb/subscriber/findByCustomField:
+    get:
+      tags:
+      - Subscriber
+      summary: Find subscribers by custom field value
+      operationId: findByCustomField
+      responses:
+        '200':
+          description: Subscribers
+  /fb/subscriber/findBySystemField:
+    get:
+      tags:
+      - Subscriber
+      summary: Find subscriber by email or phone (set one)
+      operationId: findBySystemField
+      parameters:
+      - name: email
+        in: query
+        schema:
+          type: string
+      - name: phone
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscriber
+  /fb/subscriber/addTag:
+    post:
+      tags:
+      - Subscriber
+      summary: Add a tag to a subscriber by tag ID
+      operationId: addTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subscriber_id
+              - tag_id
+              properties:
+                subscriber_id:
+                  type: integer
+                tag_id:
+                  type: integer
+      responses:
+        '200':
+          description: Tag added
+  /fb/subscriber/addTagByName:
+    post:
+      tags:
+      - Subscriber
+      summary: Add a tag to a subscriber by tag name
+      operationId: addTagByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subscriber_id
+              - tag_name
+              properties:
+                subscriber_id:
+                  type: integer
+                tag_name:
+                  type: string
+      responses:
+        '200':
+          description: Tag added
+  /fb/subscriber/removeTag:
+    post:
+      tags:
+      - Subscriber
+      summary: Remove a tag from a subscriber by tag ID
+      operationId: removeSubscriberTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Tag removed
+  /fb/subscriber/removeTagByName:
+    post:
+      tags:
+      - Subscriber
+      summary: Remove a tag from a subscriber by tag name
+      operationId: removeSubscriberTagByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Tag removed
+  /fb/subscriber/setCustomField:
+    post:
+      tags:
+      - Subscriber
+      summary: Set a custom field value by field ID
+      operationId: setCustomField
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+  /fb/subscriber/setCustomFields:
+    post:
+      tags:
+      - Subscriber
+      summary: Set multiple custom field values
+      operationId: setCustomFields
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+  /fb/subscriber/setCustomFieldByName:
+    post:
+      tags:
+      - Subscriber
+      summary: Set a custom field value by field name
+      operationId: setCustomFieldByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+  /fb/subscriber/verifyBySignedRequest:
+    post:
+      tags:
+      - Subscriber
+      summary: Verify a subscriber from a Facebook signed_request payload
+      operationId: verifyBySignedRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Verified
+  /fb/subscriber/createSubscriber:
+    post:
+      tags:
+      - Subscriber
+      summary: Create a subscriber
+      operationId: createSubscriber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Subscriber
+  /fb/subscriber/updateSubscriber:
+    post:
+      tags:
+      - Subscriber
+      summary: Update a subscriber
+      operationId: updateSubscriber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token of the form `Bearer <page-id>:<api-key>` issued from the ManyChat dashboard.

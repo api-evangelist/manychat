@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: ManyChat Page API
+  description: The ManyChat REST API exposes Page, Sending, and Subscriber operations for Facebook Messenger automation (a separate Profile API endpoint is available for white-label flows). Endpoints derived from the public Swagger document served at https://api.manychat.com/swagger. Authentication is via a Bearer token of the form `Bearer <page-id>:<api-key>` generated in the ManyChat dashboard.
+  version: beta
+  contact:
+    name: ManyChat
+    url: https://api.manychat.com/swagger
+servers:
+- url: https://api.manychat.com
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Page
+  description: Page-level configuration, tags, custom fields, bot fields, flows
+paths:
+  /fb/page/getInfo:
+    get:
+      tags:
+      - Page
+      summary: Get connected page info
+      description: 'Rate limit: 100 queries per second.'
+      operationId: getPageInfo
+      responses:
+        '200':
+          description: Page info
+  /fb/page/createTag:
+    post:
+      tags:
+      - Page
+      summary: Create a tag
+      description: 'Rate limit: 10 queries per second.'
+      operationId: createTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Tag created
+  /fb/page/getTags:
+    get:
+      tags:
+      - Page
+      summary: List page tags
+      operationId: getTags
+      responses:
+        '200':
+          description: Tags
+  /fb/page/removeTag:
+    post:
+      tags:
+      - Page
+      summary: Remove a tag by ID
+      operationId: removeTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - tag_id
+              properties:
+                tag_id:
+                  type: integer
+      responses:
+        '200':
+          description: Tag removed
+  /fb/page/removeTagByName:
+    post:
+      tags:
+      - Page
+      summary: Remove a tag by name
+      operationId: removeTagByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - tag_name
+              properties:
+                tag_name:
+                  type: string
+      responses:
+        '200':
+          description: Tag removed
+  /fb/page/getWidgets:
+    get:
+      tags:
+      - Page
+      summary: List growth widgets (deprecated; use getGrowthTools)
+      operationId: getWidgets
+      deprecated: true
+      responses:
+        '200':
+          description: Widgets
+  /fb/page/getGrowthTools:
+    get:
+      tags:
+      - Page
+      summary: List growth tools
+      operationId: getGrowthTools
+      responses:
+        '200':
+          description: Growth tools
+  /fb/page/getFlows:
+    get:
+      tags:
+      - Page
+      summary: List flows
+      operationId: getFlows
+      responses:
+        '200':
+          description: Flows
+  /fb/page/getCustomFields:
+    get:
+      tags:
+      - Page
+      summary: List custom user fields
+      operationId: getCustomFields
+      responses:
+        '200':
+          description: Custom fields
+  /fb/page/createCustomField:
+    post:
+      tags:
+      - Page
+      summary: Create a custom user field
+      operationId: createCustomField
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Custom field created
+  /fb/page/getOtnTopics:
+    get:
+      tags:
+      - Page
+      summary: List One-Time Notification topics
+      operationId: getOtnTopics
+      responses:
+        '200':
+          description: OTN topics
+  /fb/page/getBotFields:
+    get:
+      tags:
+      - Page
+      summary: List bot fields
+      operationId: getBotFields
+      responses:
+        '200':
+          description: Bot fields
+  /fb/page/createBotField:
+    post:
+      tags:
+      - Page
+      summary: Create a bot field
+      operationId: createBotField
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Bot field created
+  /fb/page/setBotField:
+    post:
+      tags:
+      - Page
+      summary: Set a bot field value by ID
+      operationId: setBotField
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+  /fb/page/setBotFieldByName:
+    post:
+      tags:
+      - Page
+      summary: Set a bot field value by name
+      operationId: setBotFieldByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+  /fb/page/setBotFields:
+    post:
+      tags:
+      - Page
+      summary: Set multiple bot fields
+      operationId: setBotFields
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token of the form `Bearer <page-id>:<api-key>` issued from the ManyChat dashboard.

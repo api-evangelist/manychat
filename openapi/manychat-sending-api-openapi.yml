@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: ManyChat Page Sending API
+  description: The ManyChat REST API exposes Page, Sending, and Subscriber operations for Facebook Messenger automation (a separate Profile API endpoint is available for white-label flows). Endpoints derived from the public Swagger document served at https://api.manychat.com/swagger. Authentication is via a Bearer token of the form `Bearer <page-id>:<api-key>` generated in the ManyChat dashboard.
+  version: beta
+  contact:
+    name: ManyChat
+    url: https://api.manychat.com/swagger
+servers:
+- url: https://api.manychat.com
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Sending
+  description: Send content and flows to subscribers
+paths:
+  /fb/sending/sendContent:
+    post:
+      tags:
+      - Sending
+      summary: Send content to a subscriber
+      description: 'Rate limit: 25 queries per second.'
+      operationId: sendContent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subscriber_id
+              - data
+              - message_tag
+              properties:
+                subscriber_id:
+                  type: integer
+                data:
+                  type: object
+                message_tag:
+                  type: string
+      responses:
+        '200':
+          description: Sent
+  /fb/sending/sendContentByUserRef:
+    post:
+      tags:
+      - Sending
+      summary: Send content using a user_ref
+      operationId: sendContentByUserRef
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Sent
+  /fb/sending/sendFlow:
+    post:
+      tags:
+      - Sending
+      summary: Send a flow to a subscriber
+      description: 'Rate limit: 20 queries per second, 100 queries per given subscriber per hour.'
+      operationId: sendFlow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subscriber_id
+              - flow_ns
+              properties:
+                subscriber_id:
+                  type: integer
+                flow_ns:
+                  type: string
+      responses:
+        '200':
+          description: Flow sent
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token of the form `Bearer <page-id>:<api-key>` issued from the ManyChat dashboard.
