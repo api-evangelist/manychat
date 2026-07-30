@@ -9,7 +9,19 @@ description: >-
   The ManyChat API allows programmatic access to subscribers, custom fields,
   flows, and messaging using API key (Bearer token) authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/manychat.png
 tags:
   - Chat Marketing
   - Messenger Marketing
@@ -24,31 +36,70 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-  - aid: manychat:rest-api
-    name: ManyChat REST API
-    description: >-
-      REST API for managing subscribers, custom fields, tags, flows, and
-      sending messages in ManyChat across Instagram, Messenger, WhatsApp, and
-      SMS. Authentication uses an API Key generated from the page Settings to
-      API screen, passed as a Bearer token in the Authorization header.
-      Interactive documentation is available via Swagger.
-    humanURL: https://api.manychat.com/swagger
-    baseURL: https://api.manychat.com
-    tags:
-      - Chat Marketing
-      - Messenger Marketing
-      - Subscribers
-      - Flows
-      - Messaging
-    properties:
-      - type: Documentation
-        url: https://api.manychat.com/swagger
-      - type: Swagger
-        url: https://api.manychat.com/swagger
-      - type: Authentication
-        url: https://help.manychat.com/hc/en-us/articles/14959510331420
-      - type: Developer Program
-        url: https://help.manychat.com/hc/en-us/articles/14281299586972
+- aid: manychat:rest-api
+  name: ManyChat REST API
+  description: >-
+    REST API for managing subscribers, custom fields, tags, flows, and sending messages in ManyChat across
+    Instagram, Messenger, WhatsApp, and SMS. Authentication uses an API Key generated from the page Settings
+    to API screen, passed as a Bearer token in the Authorization header. Interactive documentation is
+    available via Swagger.
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Chat Marketing
+  - Messenger Marketing
+  - Subscribers
+  - Flows
+  - Messaging
+  properties:
+  - type: Documentation
+    url: https://api.manychat.com/swagger
+  - type: Swagger
+    url: https://api.manychat.com/swagger
+  - type: Authentication
+    url: https://help.manychat.com/hc/en-us/articles/14959510331420
+  - type: Developer Program
+    url: https://help.manychat.com/hc/en-us/articles/14281299586972
+- aid: manychat:manychat-page-api
+  name: ManyChat Page API
+  description: Page-level configuration, tags, custom fields, bot fields, flows
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Page
+  properties:
+  - type: OpenAPI
+    url: openapi/manychat-page-api-openapi.yml
+- aid: manychat:manychat-profile-api
+  name: ManyChat Profile API
+  description: White-label profile/template management
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/manychat-profile-api-openapi.yml
+- aid: manychat:manychat-sending-api
+  name: ManyChat Sending API
+  description: Send content and flows to subscribers
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Sending
+  properties:
+  - type: OpenAPI
+    url: openapi/manychat-sending-api-openapi.yml
+- aid: manychat:manychat-subscriber-api
+  name: ManyChat Subscriber API
+  description: Lookup and manage subscribers
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Subscriber
+  properties:
+  - type: OpenAPI
+    url: openapi/manychat-subscriber-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/manychat-agentic-access.yml
