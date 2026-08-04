@@ -1,0 +1,20 @@
+{
+  "provider": "manychat",
+  "sources": [
+    "manychat-page-api-openapi.yml",
+    "manychat-profile-api-openapi.yml",
+    "manychat-sending-api-openapi.yml",
+    "manychat-subscriber-api-openapi.yml"
+  ],
+  "outputs": [
+    "manychat-page-api-openapi.yml",
+    "manychat-profile-api-openapi.yml",
+    "manychat-sending-api-openapi.yml",
+    "manychat-subscriber-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
