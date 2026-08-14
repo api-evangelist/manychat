@@ -1,25 +1,33 @@
 aid: manychat
 name: ManyChat
 description: >-
-  ManyChat is a messenger marketing platform that enables businesses to build
-  automated conversations and chat marketing flows across Instagram Direct
-  Messages, Facebook Messenger, WhatsApp, TikTok, and SMS. It provides a
-  visual flow builder, audience segmentation, broadcasts, and integrations
-  with ecommerce and CRM tools to drive engagement, lead capture, and sales.
-  The ManyChat API allows programmatic access to subscribers, custom fields,
-  flows, and messaging using API key (Bearer token) authentication.
+  ManyChat is a chat-marketing platform that lets businesses build automated
+  conversations and marketing flows across Instagram Direct Messages, Facebook
+  Messenger, WhatsApp, Telegram, TikTok and SMS. It provides a visual flow
+  builder, audience segmentation, broadcasts, growth tools and integrations with
+  ecommerce and CRM systems to drive engagement, lead capture and sales. The
+  public ManyChat REST API is a page-scoped surface of 35 operations covering
+  subscribers, tags, typed custom fields, page-level bot fields, automations and
+  sending, published as OpenAPI 3.0 and served through an interactive Swagger
+  console at api.manychat.com/swagger. Authentication is a per-page API key sent
+  as an Authorization Bearer token in the form page-id:api-key; there is no
+  OAuth, no scopes and no account-wide credential. ManyChat's only asynchronous
+  surface runs outbound: the External Request flow step calls a partner endpoint
+  and expects a Dynamic Block v2 JSON response back, so the integrator is the
+  webhook receiver rather than ManyChat pushing events.
 type: Index
 accessModel:
-  pricing: unknown
+  pricing: paid
   onboarding: self-serve
-  trial: false
+  trial: true
   try_now: false
-  public: false
-  label: Self-serve signup
+  public: true
+  label: Self-serve signup, API gated to paid tiers
   confidence: medium
   source:
   - authentication
-  generated: '2026-07-22'
+  - plans
+  generated: '2026-08-13'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/manychat.png
 tags:
@@ -30,19 +38,26 @@ tags:
   - Instagram
   - WhatsApp
   - Facebook Messenger
+  - SMS
+  - Chatbots
+  - Customer Engagement
+  - Automation
 url: >-
   https://raw.githubusercontent.com/api-evangelist/manychat/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 apis:
 - aid: manychat:rest-api
   name: ManyChat REST API
   description: >-
-    REST API for managing subscribers, custom fields, tags, flows, and sending messages in ManyChat across
-    Instagram, Messenger, WhatsApp, and SMS. Authentication uses an API Key generated from the page Settings
-    to API screen, passed as a Bearer token in the Authorization header. Interactive documentation is
-    available via Swagger.
+    REST API for managing subscribers, custom fields, tags, bot fields, flows, and sending messages in
+    ManyChat across Instagram, Messenger, WhatsApp and SMS. 35 operations across four tags. Authentication
+    uses an API key generated per connected page in Settings > API, passed as a Bearer token of the form
+    `Bearer <page-id>:<api-key>`. ManyChat serves the machine-readable contract as OpenAPI 3.0 from
+    api.manychat.com/swagger/compileJson, which the Swagger console at api.manychat.com/swagger loads.
+    Only HTTP 200 and 400 are declared anywhere in the contract; there is no idempotency key, no
+    pagination, and no rate-limit response headers.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
@@ -54,61 +69,144 @@ apis:
   properties:
   - type: Documentation
     url: https://api.manychat.com/swagger
+  - type: APIReference
+    url: https://api.manychat.com/swagger
   - type: Swagger
     url: https://api.manychat.com/swagger
+  - type: OpenAPI
+    name: Provider-published Swagger, Page API (verbatim)
+    url: openapi/_original/manychat-page-api-swagger-original.json
+  - type: OpenAPI
+    name: Provider-published Swagger, Profile API (verbatim)
+    url: openapi/_original/manychat-profile-api-swagger-original.json
   - type: Authentication
     url: https://help.manychat.com/hc/en-us/articles/14959510331420
   - type: Developer Program
     url: https://help.manychat.com/hc/en-us/articles/14281299586972
+  - type: GettingStarted
+    url: https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
+  - type: RateLimits
+    url: rate-limits/manychat-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/manychat-problem-types.yml
 - aid: manychat:manychat-page-api
   name: ManyChat Page API
-  description: Page-level configuration, tags, custom fields, bot fields, flows
+  description: >-
+    Page-level configuration for a connected ManyChat page: connected page info, tags, typed custom user
+    field definitions, global bot fields, automations (flows) and folders, growth tools and One-Time
+    Notification topics. 16 operations. Reads are limited to 100 queries per second and writes to 10;
+    getFlows is the exception at 10 q/s. removeTag and removeTagByName delete the tag from the page and
+    every subscriber carrying it and cannot be undone.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
   - Page
+  - Tags
+  - Custom Fields
+  - Bot Fields
+  - Flows
   properties:
   - type: OpenAPI
     url: openapi/manychat-page-api-openapi.yml
+  - type: Overlay
+    url: overlays/manychat-page-api-overlay.yaml
 - aid: manychat:manychat-profile-api
   name: ManyChat Profile API
-  description: White-label profile/template management
+  description: >-
+    White-label profile and template management. A single operation that generates a single-use install
+    link for a ManyChat template, served from its own Swagger document at
+    api.manychat.com/swagger/compileJson?type=Profile_API. ManyChat publishes no rate limit for it.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
   - Profile
+  - Template
   properties:
   - type: OpenAPI
     url: openapi/manychat-profile-api-openapi.yml
+  - type: Overlay
+    url: overlays/manychat-profile-api-overlay.yaml
 - aid: manychat:manychat-sending-api
   name: ManyChat Sending API
-  description: Send content and flows to subscribers
+  description: >-
+    Send Dynamic Block content and trigger automations for a subscriber across Messenger, Instagram and
+    WhatsApp. 3 operations. This is the surface governed by Meta policy rather than by ManyChat: outside
+    the 24-hour messaging window a message tag is required (error 3011), One-Time Notification sends need
+    a token for the topic (3021), and channel restrictions surface as the 304X error family. sendFlow is
+    additionally capped at 100 queries per given subscriber per hour. There is no idempotency key, so a
+    retry delivers a duplicate message.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
   - Sending
+  - Messaging
+  - Broadcast
   properties:
   - type: OpenAPI
     url: openapi/manychat-sending-api-openapi.yml
+  - type: Overlay
+    url: overlays/manychat-sending-api-overlay.yaml
 - aid: manychat:manychat-subscriber-api
   name: ManyChat Subscriber API
-  description: Lookup and manage subscribers
+  description: >-
+    Look up, search, create, update, tag and set custom field values on subscribers. 15 operations. A
+    subscriber carries per-channel identity fields for Messenger, Instagram, WhatsApp, email and SMS on
+    one record. Search operations are hard-capped at 100 results with no pagination or cursor, so a full
+    result set is unreachable through the API when the cap is hit.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
   - Subscriber
+  - Contacts
+  - Segmentation
   properties:
   - type: OpenAPI
     url: openapi/manychat-subscriber-api-openapi.yml
+  - type: Overlay
+    url: overlays/manychat-subscriber-api-overlay.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/manychat-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/manychat-vulnerability-disclosure.yml
+  - type: Security
+    url: https://manychat.com/security/vulnerability
   - type: DomainSecurity
     url: security/manychat-domain-security.yml
   - type: Authentication
     url: authentication/manychat-authentication.yml
+  - type: Conventions
+    url: conventions/manychat-conventions.yml
+  - type: Conformance
+    url: conformance/manychat-conformance.yml
+  - type: ErrorCatalog
+    url: errors/manychat-problem-types.yml
+  - type: DataModel
+    url: data-model/manychat-data-model.yml
+  - type: RateLimits
+    url: rate-limits/manychat-rate-limits.yml
+  - type: Plans
+    url: plans/manychat-plans-pricing.yml
+  - type: Lifecycle
+    url: lifecycle/manychat-lifecycle.yml
+  - type: StatusPage
+    url: https://status.manychat.com
+  - type: Packages
+    url: packages/manychat-packages.yml
+  - type: SDKs
+    url: packages/manychat-packages.yml
+  - type: Vocabulary
+    url: vocabulary/manychat-dynamic-block-vocabulary.yml
+  - type: Webhooks
+    url: asyncapi/manychat-dynamic-block-webhooks.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/manychat-llms.txt
+  - type: WellKnownProbe
+    url: well-known/manychat-well-known.yml
+  - type: MCPCandidate
+    url: mcp/manychat-mcp.yml
   - type: GitHubOrganization
     url: https://github.com/manychat
   - type: LinkedIn
@@ -117,12 +215,59 @@ common:
     url: https://manychat.com
   - type: Documentation
     url: https://api.manychat.com/swagger
-  - type: Pricing
-    url: https://manychat.com/pricing
-  - type: Signup
-    url: https://manychat.com/signup
+  - type: APIReference
+    url: https://api.manychat.com/swagger
+  - type: GettingStarted
+    url: https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
+  - type: Support
+    url: https://help.manychat.com
   - type: Help Center
     url: https://help.manychat.com
+  - type: Community
+    url: https://community.manychat.com
+  - type: Pricing
+    url: https://manychat.com/pricing
+  - type: SignUp
+    url: https://manychat.com/signup
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-pointer-notes:
+  - >-
+    NO `MCPServer` pointer is emitted. mcp/manychat-mcp.yml is a DERIVED candidate tool list with
+    `deployment.mode: none` — ManyChat ships no first-party MCP server in either remote or stdio form
+    (api.manychat.com/mcp 404s). It is wired as `MCPCandidate` so the artifact is discoverable without
+    crediting ManyChat with an agent surface it does not serve.
+  - >-
+    NO `WellKnown` or `SecurityTxt` pointer is emitted. Every /.well-known/ path was probed on all three
+    hosts and none returned a document on this run. The probe is wired as `WellKnownProbe` because it
+    records an absence, not a presence.
+  - >-
+    NO `Idempotency` pointer is emitted. ManyChat publishes no idempotency key, header or de-duplication
+    contract on any write operation.
+  - >-
+    NO `AsyncAPI` pointer is emitted — ManyChat publishes no AsyncAPI document. `Webhooks` IS emitted,
+    because the External Request / Dynamic Block contract is a real, first-party, versioned outbound
+    webhook surface, even though it runs in the unusual direction.
+  - >-
+    NO `AgentCard` pointer is emitted. /.well-known/agent-card.json and /.well-known/agent.json return 404
+    on every reachable ManyChat host.
+  - >-
+    NO `Deprecation` pointer is emitted. ManyChat publishes no deprecation policy and no Sunset/Deprecation
+    header support; its one superseded operation (getWidgets) is flagged only in prose.
+  - >-
+    NO `Compliance` or `TrustCenter` pointer is emitted. trust.manychat.com and manychat.com/security both
+    return 403 behind a Cloudflare challenge, so no certification claim could be read from a ManyChat
+    surface.
+  - >-
+    NO `Postman` pointer is emitted. A public ManyChat workspace exists at postman.com/postman-atlas but it
+    is published by Postman's own Atlas team, not by ManyChat.
+  - >-
+    NO `TermsOfService`, `PrivacyPolicy`, `Blog` or `DeveloperPortal` pointers are emitted. Those pages are
+    on manychat.com, which returns 403 to every non-browser client, so none could be verified; and
+    developers.manychat.com 302-redirects to the marketing homepage rather than serving a portal.
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1
