@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "da1acfd7-871e-4258-860d-e80c24d499e2",
+      "name": "Sending",
+      "description": {
+        "content": "Send content and flows to subscribers across Messenger, Instagram and WhatsApp",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed6b7f1c-ccab-452f-a18c-7973f84da8a5",
+          "name": "Send content to subscriber",
+          "request": {
+            "name": "Send content to subscriber",
+            "description": {
+              "content": "Rate limit: 25 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "sending",
+                "sendContent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"data\": {},\n  \"message_tag\": \"<string>\",\n  \"otn_topic_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7aa0442f-db5a-4249-8e8c-c1077819cd1f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendContent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"data\": {},\n  \"message_tag\": \"ACCOUNT_UPDATE\",\n  \"otn_topic_name\": \"Сhannel news\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73f53058-053a-419f-9e96-f80f8bc2a1c2",
+              "name": "Possible error codes:\n3011 - Content can’t be sent to subscriber without message tag. Subscriber’s last interaction was over 24h ago.\n3021 - Content can’t be sent to subscriber. The subscriber has no One-Time Notification tokens for the selected topic.\n3031 - Content can’t be sent to subscriber without Notification Reason. Subscriber’s last interaction was more than 24 hours ago.\n304X - Content can’t be sent to subscriber via specific channel.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendContent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"data\": {},\n  \"message_tag\": \"ACCOUNT_UPDATE\",\n  \"otn_topic_name\": \"Сhannel news\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"code\": 6187\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d069628f-c43c-405f-8664-1f7bd3148775",
+          "name": "Send content to user ref",
+          "request": {
+            "name": "Send content to user ref",
+            "description": {
+              "content": "Rate limit: 25 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "sending",
+                "sendContentByUserRef"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_ref\": \"<integer>\",\n  \"data\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ab58348-ce23-4932-ad28-07a8e2dcfa69",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendContentByUserRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ref\": \"<integer>\",\n  \"data\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04fffc54-b73e-415a-8ad9-653459e54f64",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendContentByUserRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ref\": \"<integer>\",\n  \"data\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54cb62aa-b053-4812-97ef-ef55967ddde3",
+          "name": "Send Automation to subscriber",
+          "request": {
+            "name": "Send Automation to subscriber",
+            "description": {
+              "content": "Rate limit: 20 queries per second, 100 queries per a given subscriber per hour",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "sending",
+                "sendFlow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"flow_ns\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1710e867-1c3a-420f-b2e3-b6a13fef5762",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendFlow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"flow_ns\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f674f9ff-ae78-4254-b6f7-2d64325cfa29",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "sending",
+                    "sendFlow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"flow_ns\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manychat.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a7c82306-4418-4ee7-bb67-cd74d339a114",
+    "name": "ManyChat Sending API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ManyChat Sending API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Page_API). Authentication is an API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement; the provider's generated hash ID is preserved on each operation as `x-provider-operation-id`.\n\nContact Support:\n Name: ManyChat",
+      "type": "text/plain"
+    }
+  }
+}

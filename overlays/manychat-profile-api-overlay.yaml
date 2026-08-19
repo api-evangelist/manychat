@@ -1,0 +1,37 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for ManyChat Profile API
+  version: 1.0.0
+extends: openapi/manychat-profile-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-note: 'Captures the API Evangelist refinements applied on top of the Swagger document ManyChat publishes: a real production
+  server host (the provider ships an empty relative servers[] entry), readable operation IDs alongside the provider''s generated
+  hash IDs, the authentication key format, and explicit x-idempotent:false on every write because ManyChat publishes no idempotency
+  contract. The harvested original is never mutated.'
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment: '2026-08-13'
+    x-apievangelist-source: https://api.manychat.com/swagger/compileJson?type=Profile_API
+    x-apievangelist-conventions: conventions/manychat-conventions.yml
+    x-apievangelist-errors: errors/manychat-problem-types.yml
+    x-apievangelist-rate-limits: rate-limits/manychat-rate-limits.yml
+    x-apievangelist-data-model: data-model/manychat-data-model.yml
+- target: $.servers
+  description: ManyChat publishes servers[] as a single empty relative URL. The production host is the one serving the Swagger
+    document.
+  update:
+  - url: https://api.manychat.com
+    description: Production
+- target: $.components.securitySchemes.Bearer
+  update:
+    x-key-format: Bearer <page-id>:<api-key>
+    x-issued-at: ManyChat dashboard > page Settings > API
+    x-scope: one API key per connected page
+- target: $.paths['/user/template/generateSingleUseLink'].post
+  description: API Evangelist refinement of POST /user/template/generateSingleUseLink
+  update:
+    x-apievangelist-operation-id: generateTemplateSingleUseLink
+    x-provider-operation-id: 1fc7d7960d592bd7d6162fd0a373d16a
+    x-idempotent: false

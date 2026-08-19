@@ -1,11 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: manychat.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 14 16:48:11 2026 GMT
+  cert_expires: Oct 12 17:16:43 2026 GMT
   hsts: null
 - host: api.manychat.com
   https: true
@@ -17,12 +17,12 @@ domains:
 - domain: manychat.com
   dnssec: false
   caa:
-  - 0 issue "awstrust.com"
-  - 0 issue "amazonaws.com"
-  - 0 issue "sectigo.com"
-  - 0 issue "amazon.com"
-  - 0 issue "letsencrypt.org"
   - 0 issue "pki.goog"
+  - 0 issue "amazon.com"
+  - 0 issue "usertrust.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "awstrust.com"
+  - 0 issue "amazontrust.com"
   spf: true
   dmarc: true
   dmarc_policy: quarantine

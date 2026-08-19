@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ManyChat Sending API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send content to subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendContent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 25 queries per second"
+        },
+        {
+          "info": {
+            "name": "Send content to user ref",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendContentByUserRef",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 25 queries per second"
+        },
+        {
+          "info": {
+            "name": "Send Automation to subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/sending/sendFlow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 20 queries per second, 100 queries per a given subscriber per hour"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

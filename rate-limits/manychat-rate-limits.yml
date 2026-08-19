@@ -1,0 +1,272 @@
+generated: '2026-08-13'
+method: probed
+source: https://api.manychat.com/swagger/compileJson?type=Page_API
+docs: https://api.manychat.com/swagger
+note: >-
+  ManyChat publishes a per-operation rate limit inside the `description` of every operation in the
+  Swagger document its API console loads (`***Limit:*** N queries per second`). These limits were read
+  directly out of that provider-served document on 2026-08-13, not from a third-party summary. ManyChat
+  does NOT document any rate-limit response headers, does not document the status code returned on
+  exhaustion, and does not document a Retry-After contract — an agent has no runtime signal here, only
+  the static numbers below. That gap is the finding.
+scope: per-page-api-key
+window: 1s
+limit_count: 34
+headers:
+  published: false
+  request_headers: []
+  response_headers: []
+  retry_after: false
+  exhaustion_status: undocumented
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After headers are documented anywhere in the Swagger
+    document or the operation descriptions. Exhaustion behaviour is undocumented.
+tiers:
+  - tier: read-heavy
+    limit: 100
+    window: 1s
+    scope: per-page-api-key
+    operations:
+      - getPageInfo
+      - getTags
+      - getWidgets
+      - getGrowthTools
+      - getCustomFields
+      - getOtnTopics
+      - getBotFields
+  - tier: system-field-lookup
+    limit: 50
+    window: 1s
+    scope: per-page-api-key
+    operations:
+      - findBySystemField
+  - tier: sending-content
+    limit: 25
+    window: 1s
+    scope: per-page-api-key
+    operations:
+      - sendContent
+      - sendContentByUserRef
+  - tier: sending-flow
+    limit: 20
+    window: 1s
+    scope: per-page-api-key
+    operations:
+      - sendFlow
+  - tier: write-and-search
+    limit: 10
+    window: 1s
+    scope: per-page-api-key
+    operations:
+      - createTag
+      - removeTag
+      - removeTagByName
+      - createCustomField
+      - getFlows
+      - createBotField
+      - setBotField
+      - setBotFieldByName
+      - setBotFields
+      - getSubscriberInfo
+      - findSubscriberByName
+      - findByCustomField
+      - addTag
+      - addTagByName
+      - removeSubscriberTag
+      - removeSubscriberTagByName
+      - setCustomField
+      - setCustomFields
+      - setCustomFieldByName
+      - verifyBySignedRequest
+      - createSubscriber
+      - updateSubscriber
+limits:
+  - operation: getPageInfo
+    path: /fb/page/getInfo
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: createTag
+    path: /fb/page/createTag
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: getTags
+    path: /fb/page/getTags
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: removeTag
+    path: /fb/page/removeTag
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: removeTagByName
+    path: /fb/page/removeTagByName
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: getWidgets
+    path: /fb/page/getWidgets
+    method: GET
+    limit: 100
+    window: 1s
+    note: Deprecated by the provider — "Use getGrowthTools instead."
+  - operation: createCustomField
+    path: /fb/page/createCustomField
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: getGrowthTools
+    path: /fb/page/getGrowthTools
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: getFlows
+    path: /fb/page/getFlows
+    method: GET
+    limit: 10
+    window: 1s
+  - operation: getCustomFields
+    path: /fb/page/getCustomFields
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: getOtnTopics
+    path: /fb/page/getOtnTopics
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: getBotFields
+    path: /fb/page/getBotFields
+    method: GET
+    limit: 100
+    window: 1s
+  - operation: createBotField
+    path: /fb/page/createBotField
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setBotField
+    path: /fb/page/setBotField
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setBotFieldByName
+    path: /fb/page/setBotFieldByName
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setBotFields
+    path: /fb/page/setBotFields
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: sendContent
+    path: /fb/sending/sendContent
+    method: POST
+    limit: 25
+    window: 1s
+  - operation: sendContentByUserRef
+    path: /fb/sending/sendContentByUserRef
+    method: POST
+    limit: 25
+    window: 1s
+  - operation: sendFlow
+    path: /fb/sending/sendFlow
+    method: POST
+    limit: 20
+    window: 1s
+    secondary_limit:
+      limit: 100
+      window: 1h
+      scope: per-subscriber
+      note: '100 queries per a given subscriber per hour'
+  - operation: getSubscriberInfo
+    path: /fb/subscriber/getInfo
+    method: GET
+    limit: 10
+    window: 1s
+  - operation: findSubscriberByName
+    path: /fb/subscriber/findByName
+    method: GET
+    limit: 10
+    window: 1s
+    result_cap: 100
+  - operation: getSubscriberByUserRef
+    path: /fb/subscriber/getInfoByUserRef
+    method: GET
+    limit: null
+    window: null
+    note: ManyChat publishes no limit for this operation.
+  - operation: findByCustomField
+    path: /fb/subscriber/findByCustomField
+    method: GET
+    limit: 10
+    window: 1s
+    result_cap: 100
+  - operation: findBySystemField
+    path: /fb/subscriber/findBySystemField
+    method: GET
+    limit: 50
+    window: 1s
+  - operation: addTag
+    path: /fb/subscriber/addTag
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: addTagByName
+    path: /fb/subscriber/addTagByName
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: removeSubscriberTag
+    path: /fb/subscriber/removeTag
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: removeSubscriberTagByName
+    path: /fb/subscriber/removeTagByName
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setCustomField
+    path: /fb/subscriber/setCustomField
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setCustomFields
+    path: /fb/subscriber/setCustomFields
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: setCustomFieldByName
+    path: /fb/subscriber/setCustomFieldByName
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: verifyBySignedRequest
+    path: /fb/subscriber/verifyBySignedRequest
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: createSubscriber
+    path: /fb/subscriber/createSubscriber
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: updateSubscriber
+    path: /fb/subscriber/updateSubscriber
+    method: POST
+    limit: 10
+    window: 1s
+  - operation: generateTemplateSingleUseLink
+    path: /user/template/generateSingleUseLink
+    method: POST
+    limit: null
+    window: null
+    note: Profile API. ManyChat publishes no limit for this operation.
+other_limits:
+  - subject: Dynamic Block response payload
+    limit: 10 messages, 11 quick replies, 5 actions per response
+    source: https://manychat.github.io/dynamic_block_docs/

@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: probed
+source: probed 2026-08-13
+result: none
+note: >-
+  Every /.well-known/ path was probed on all three ManyChat hosts and NONE returned a document. No
+  WellKnown, SecurityTxt, APICatalog or AgentCard pointer is emitted from this file — the probe records an
+  absence, not a presence. Two distinct failure modes were observed and they mean different things:
+  api.manychat.com answers a genuine 404 (the host serves us and has nothing at these paths), while
+  manychat.com answers 403 with a Cloudflare "Just a moment..." interstitial, which is a bot challenge —
+  we cannot distinguish "not served" from "served but withheld from non-browser clients" on that host.
+  help.manychat.com answers 404 with the Zendesk shell.
+hosts:
+  - host: https://api.manychat.com
+    reachable: true
+    challenge: false
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://manychat.com
+    reachable: false
+    challenge: cloudflare-interstitial
+    note: >-
+      All paths return HTTP 403 with a Cloudflare managed-challenge page ("Just a moment..."), including
+      with a full browser user-agent and header set. Absence is unconfirmed on this host.
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/oauth-protected-resource, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+      - {path: /llms.txt, status: 403}
+  - host: https://help.manychat.com
+    reachable: true
+    challenge: false
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /llms.txt, status: 404}
+prior_harvest_reconciliation:
+  note: >-
+    An earlier API Evangelist probe on 2026-07-11 DID reach https://manychat.com/.well-known/security.txt
+    and read a real RFC 9116 document from it — that harvest is recorded in
+    security/manychat-vulnerability-disclosure.yml (Policy: https://manychat.com/security/vulnerability,
+    Contact: mailto:security@manychat.com). ManyChat therefore does serve a security.txt; today's probe
+    could not reach it. This is a Cloudflare access change on our side of the wire, not a ManyChat
+    regression, and the earlier searched artifact is NOT downgraded because of it. No WellKnown or
+    SecurityTxt pointer is emitted from THIS file, because this run observed no 200 — the rule is that the
+    pointer follows an observed document, and the security posture is carried by the Security pointer on
+    the vulnerability-disclosure artifact instead.
+  earlier_hit:
+    url: https://manychat.com/.well-known/security.txt
+    date: '2026-07-11'
+    status: 200
+    artifact: security/manychat-vulnerability-disclosure.yml
+summary:
+  documents_found: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+  llms_txt: false

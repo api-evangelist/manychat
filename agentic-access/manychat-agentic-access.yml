@@ -1,6 +1,7 @@
-generated: '2026-07-15'
+generated: '2026-08-13'
 method: generated
-source: openapi/manychat-openapi.yml
+source: openapi/manychat-page-api-openapi.yml, openapi/manychat-profile-api-openapi.yml, openapi/manychat-sending-api-openapi.yml,
+  openapi/manychat-subscriber-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
@@ -93,6 +94,22 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /fb/page/createCustomField
+  method: post
+  operationId: createCustomField
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /fb/page/getGrowthTools
   method: get
   operationId: getGrowthTools
@@ -123,22 +140,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /fb/page/createCustomField
-  method: post
-  operationId: createCustomField
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /fb/page/getOtnTopics
   method: get
   operationId: getOtnTopics
@@ -210,6 +211,22 @@ operations:
 - path: /fb/page/setBotFields
   method: post
   operationId: setBotFields
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/template/generateSingleUseLink
+  method: post
+  operationId: generateTemplateSingleUseLink
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -474,22 +491,6 @@ operations:
 - path: /fb/subscriber/updateSubscriber
   method: post
   operationId: updateSubscriber
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /user/template/generateSingleUseLink
-  method: post
-  operationId: generateTemplateSingleUseLink
   x-agentic-access:
     action-class: acting
     consequence: write

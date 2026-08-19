@@ -1,0 +1,129 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/manychat-page-api-swagger-original.json
+docs: https://api.manychat.com/swagger
+format: proprietary
+rfc9457: false
+note: >-
+  ManyChat does not use RFC 9457 `application/problem+json`. It returns a proprietary JSON envelope on
+  `application/json` with an HTTP 400 for every failure documented in the spec — there are no 401/403/404/
+  409/429/5xx responses declared anywhere in the published Swagger document. Two envelope shapes exist and
+  they are NOT interchangeable: validation failures return `Response Error` (a `details.messages[]` array of
+  human strings, no machine code), while send/lookup failures return `Response Error With Code` (a numeric
+  `code`). An agent cannot tell which envelope it will get from the operation alone in most cases.
+envelopes:
+  - name: ResponseError
+    schema: '#/components/schemas/ResponseError'
+    fields:
+      status: string, always "error"
+      message: string, human-readable
+      details.messages[].message: string, per-field validation message
+    machine_readable_code: false
+    used_by:
+      - createTag
+      - removeTag
+      - removeTagByName
+      - createCustomField
+      - createBotField
+      - setBotField
+      - setBotFieldByName
+      - setBotFields
+      - sendContentByUserRef
+      - sendFlow
+      - findByCustomField
+      - addTag
+      - addTagByName
+      - removeSubscriberTag
+      - removeSubscriberTagByName
+      - setCustomField
+      - setCustomFields
+      - setCustomFieldByName
+      - createSubscriber
+      - updateSubscriber
+      - generateTemplateSingleUseLink
+  - name: ResponseErrorWithCode
+    schema: '#/components/schemas/ResponseErrorWithCode'
+    fields:
+      status: string, always "error"
+      message: string, human-readable
+      code: integer, machine-readable ManyChat error code
+    machine_readable_code: true
+    used_by:
+      - sendContent
+      - getSubscriberByUserRef
+problems:
+  - status: 400
+    code: 3011
+    title: Message tag required — 24-hour window closed
+    detail: >-
+      Content can't be sent to subscriber without message tag. Subscriber's last interaction was over 24h ago.
+    remediation: >-
+      Supply a `message_tag` (e.g. ACCOUNT_UPDATE) on the sendContent request, or re-engage the subscriber
+      inside the Meta 24-hour messaging window.
+    envelope: ResponseErrorWithCode
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContent
+  - status: 400
+    code: 3021
+    title: No One-Time Notification token for topic
+    detail: >-
+      Content can't be sent to subscriber. The subscriber has no One-Time Notification tokens for the
+      selected topic.
+    remediation: >-
+      Collect an OTN token for the topic first, or send via a different topic listed by getOtnTopics.
+    envelope: ResponseErrorWithCode
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContent
+  - status: 400
+    code: 3031
+    title: Notification Reason required — 24-hour window closed
+    detail: >-
+      Content can't be sent to subscriber without Notification Reason. Subscriber's last interaction was
+      more than 24 hours ago.
+    remediation: Supply a Notification Reason on the send request.
+    envelope: ResponseErrorWithCode
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContent
+  - status: 400
+    code: 304X
+    title: Channel-specific send failure
+    detail: "Content can't be sent to subscriber via specific channel."
+    remediation: >-
+      ManyChat publishes this as a wildcard family (`304X`) rather than enumerated codes; the exact member
+      codes are not documented. Read `message` for the channel-specific reason.
+    envelope: ResponseErrorWithCode
+    wildcard: true
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContent
+  - status: 400
+    code: 2011
+    title: user_ref is not registered
+    detail: "User_ref isn't registered"
+    remediation: >-
+      The `user_ref` was never opted in through a Checkbox/Customer Chat plugin. Re-run the opt-in flow
+      before calling getSubscriberByUserRef.
+    envelope: ResponseErrorWithCode
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#getSubscriberByUserRef
+  - status: 400
+    code: 2012
+    title: user_ref not linked to a subscriber_id
+    detail: User_ref has not been linked with subscriber_id
+    remediation: >-
+      The opt-in has not yet resolved into a subscriber. Poll, or address the subscriber by
+      `user_ref` via sendContentByUserRef instead of by `subscriber_id`.
+    envelope: ResponseErrorWithCode
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#getSubscriberByUserRef
+  - status: 400
+    code: null
+    title: Validation error
+    detail: >-
+      Generic validation failure. Returned with the `ResponseError` envelope; the specific problem is only
+      available as human-readable strings in `details.messages[]`.
+    remediation: Read `details.messages[]`; there is no machine-readable code on this envelope.
+    envelope: ResponseError
+    applies_to: all operations listed under the ResponseError envelope above
+gaps:
+  - >-
+    No 401 / 403 response is declared on any operation despite every operation requiring a Bearer token —
+    authentication failure behaviour is undocumented.
+  - No 429 response is declared despite every operation carrying a published per-second rate limit.
+  - No 404 or 5xx responses are declared anywhere in the spec.
+  - >-
+    The `304X` code is published as a wildcard rather than an enumerated set, so an agent cannot switch on
+    it deterministically.

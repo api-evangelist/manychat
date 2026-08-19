@@ -1,0 +1,2259 @@
+{
+  "item": [
+    {
+      "id": "c39810d6-249b-4e20-a6ef-f305ff219268",
+      "name": "Subscriber",
+      "description": {
+        "content": "Look up, create, update, tag and set custom fields on subscribers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9f5821f-7fe5-4f65-b071-a69547d9744c",
+          "name": "Get info",
+          "request": {
+            "name": "Get info",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "getInfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "subscriber_id",
+                  "value": "<integer>",
+                  "description": "(Required) Get subscriber info."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dcfaa7c6-99e9-439c-a94d-dfb8fb008fe9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "getInfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subscriber_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"string\",\n    \"page_id\": \"string\",\n    \"user_refs\": [\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      },\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      }\n    ],\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"profile_pic\": \"string\",\n    \"locale\": \"string\",\n    \"language\": \"string\",\n    \"timezone\": \"string\",\n    \"live_chat_url\": \"string\",\n    \"last_input_text\": \"string\",\n    \"optin_phone\": true,\n    \"phone\": \"string\",\n    \"optin_email\": true,\n    \"email\": \"string\",\n    \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n    \"is_followup_enabled\": true,\n    \"ig_username\": \"user_name\",\n    \"ig_id\": 6384638,\n    \"whatsapp_phone\": \"string\",\n    \"whatsapp_bsuid\": \"US.8234928392384832\",\n    \"whatsapp_username\": \"@username\",\n    \"optin_whatsapp\": true,\n    \"custom_fields\": [\n      {\n        \"id\": 3040,\n        \"name\": \"string\",\n        \"type\": \"boolean\",\n        \"description\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"id\": 145,\n        \"name\": \"string\",\n        \"type\": \"text\",\n        \"description\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"tags\": [\n      {\n        \"id\": 9404,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 5576,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab36acb1-ad8c-4770-8abb-3b9ab5133ed6",
+          "name": "Find by name",
+          "request": {
+            "name": "Find by name",
+            "description": {
+              "content": "Rate limit: 10 queries per second.\nThis API method search subscribers by full name.\nList is limited by 100 subscribers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "findByName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a24896a-595d-42db-9098-f310cf2c1db1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "findByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"page_id\": \"string\",\n      \"user_refs\": [\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        },\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        }\n      ],\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"profile_pic\": \"string\",\n      \"locale\": \"string\",\n      \"language\": \"string\",\n      \"timezone\": \"string\",\n      \"live_chat_url\": \"string\",\n      \"last_input_text\": \"string\",\n      \"optin_phone\": true,\n      \"phone\": \"string\",\n      \"optin_email\": true,\n      \"email\": \"string\",\n      \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n      \"is_followup_enabled\": true,\n      \"ig_username\": \"user_name\",\n      \"ig_id\": 6384638,\n      \"whatsapp_phone\": \"string\",\n      \"whatsapp_bsuid\": \"US.8234928392384832\",\n      \"whatsapp_username\": \"@username\",\n      \"optin_whatsapp\": true,\n      \"custom_fields\": [\n        {\n          \"id\": 4929,\n          \"name\": \"string\",\n          \"type\": \"datetime\",\n          \"description\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"id\": 231,\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"description\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"tags\": [\n        {\n          \"id\": 667,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4368,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"page_id\": \"string\",\n      \"user_refs\": [\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        },\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        }\n      ],\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"profile_pic\": \"string\",\n      \"locale\": \"string\",\n      \"language\": \"string\",\n      \"timezone\": \"string\",\n      \"live_chat_url\": \"string\",\n      \"last_input_text\": \"string\",\n      \"optin_phone\": false,\n      \"phone\": \"string\",\n      \"optin_email\": false,\n      \"email\": \"string\",\n      \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n      \"is_followup_enabled\": true,\n      \"ig_username\": \"user_name\",\n      \"ig_id\": 6384638,\n      \"whatsapp_phone\": \"string\",\n      \"whatsapp_bsuid\": \"US.8234928392384832\",\n      \"whatsapp_username\": \"@username\",\n      \"optin_whatsapp\": true,\n      \"custom_fields\": [\n        {\n          \"id\": 9867,\n          \"name\": \"string\",\n          \"type\": \"datetime\",\n          \"description\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"id\": 7695,\n          \"name\": \"string\",\n          \"type\": \"date\",\n          \"description\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"tags\": [\n        {\n          \"id\": 8654,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 6995,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "614008b2-1de3-4a67-b30a-99e2d72692f2",
+          "name": "Get info by user ref",
+          "request": {
+            "name": "Get info by user ref",
+            "description": {},
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "getInfoByUserRef"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_ref",
+                  "value": "<integer>",
+                  "description": "(Required) Ref of subscriber"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "002ae989-827e-4f79-a5a7-d09d51da5629",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "getInfoByUserRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_ref",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"string\",\n    \"page_id\": \"string\",\n    \"user_refs\": [\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      },\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      }\n    ],\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"profile_pic\": \"string\",\n    \"locale\": \"string\",\n    \"language\": \"string\",\n    \"timezone\": \"string\",\n    \"live_chat_url\": \"string\",\n    \"last_input_text\": \"string\",\n    \"optin_phone\": false,\n    \"phone\": \"string\",\n    \"optin_email\": false,\n    \"email\": \"string\",\n    \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n    \"is_followup_enabled\": true,\n    \"ig_username\": \"user_name\",\n    \"ig_id\": 6384638,\n    \"whatsapp_phone\": \"string\",\n    \"whatsapp_bsuid\": \"US.8234928392384832\",\n    \"whatsapp_username\": \"@username\",\n    \"optin_whatsapp\": true,\n    \"custom_fields\": [\n      {\n        \"id\": 2391,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"id\": 657,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"tags\": [\n      {\n        \"id\": 4817,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 146,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de18aa45-0599-4039-b0ab-c88181761162",
+              "name": "Possible error codes:\n2011 - User_ref isn't registered\n2012 - User_ref has not been linked with subscriber_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "getInfoByUserRef"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_ref",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"code\": 4624\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1c8b9a9-b664-4384-ac83-12751811e7a3",
+          "name": "Find by custom field",
+          "request": {
+            "name": "Find by custom field",
+            "description": {
+              "content": "Rate limit: 10 queries per second.\nThis API method only works with Text and Number types of Custom User Fields.\nResults are sorted by last Custom User Field value update for a specific user.\nList is limited by 100 elements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "findByCustomField"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "field_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "field_value",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "813b1aae-7cf1-4655-921f-d017d5f21be2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "findByCustomField"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "field_value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"page_id\": \"string\",\n      \"user_refs\": [\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        },\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        }\n      ],\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"profile_pic\": \"string\",\n      \"locale\": \"string\",\n      \"language\": \"string\",\n      \"timezone\": \"string\",\n      \"live_chat_url\": \"string\",\n      \"last_input_text\": \"string\",\n      \"optin_phone\": true,\n      \"phone\": \"string\",\n      \"optin_email\": true,\n      \"email\": \"string\",\n      \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n      \"is_followup_enabled\": true,\n      \"ig_username\": \"user_name\",\n      \"ig_id\": 6384638,\n      \"whatsapp_phone\": \"string\",\n      \"whatsapp_bsuid\": \"US.8234928392384832\",\n      \"whatsapp_username\": \"@username\",\n      \"optin_whatsapp\": true,\n      \"custom_fields\": [\n        {\n          \"id\": 4929,\n          \"name\": \"string\",\n          \"type\": \"datetime\",\n          \"description\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"id\": 231,\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"description\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"tags\": [\n        {\n          \"id\": 667,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4368,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"page_id\": \"string\",\n      \"user_refs\": [\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        },\n        {\n          \"user_ref\": \"-1543835812530302162\",\n          \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n        }\n      ],\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"profile_pic\": \"string\",\n      \"locale\": \"string\",\n      \"language\": \"string\",\n      \"timezone\": \"string\",\n      \"live_chat_url\": \"string\",\n      \"last_input_text\": \"string\",\n      \"optin_phone\": false,\n      \"phone\": \"string\",\n      \"optin_email\": false,\n      \"email\": \"string\",\n      \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n      \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n      \"is_followup_enabled\": true,\n      \"ig_username\": \"user_name\",\n      \"ig_id\": 6384638,\n      \"whatsapp_phone\": \"string\",\n      \"whatsapp_bsuid\": \"US.8234928392384832\",\n      \"whatsapp_username\": \"@username\",\n      \"optin_whatsapp\": true,\n      \"custom_fields\": [\n        {\n          \"id\": 9867,\n          \"name\": \"string\",\n          \"type\": \"datetime\",\n          \"description\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"id\": 7695,\n          \"name\": \"string\",\n          \"type\": \"date\",\n          \"description\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"tags\": [\n        {\n          \"id\": 8654,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 6995,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84b15d27-f05b-44ec-adad-ba4b275791ed",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "findByCustomField"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "field_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "field_value",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f1e121c-5c74-4876-9f60-599509e77614",
+          "name": "Find by system field",
+          "request": {
+            "name": "Find by system field",
+            "description": {
+              "content": "Rate limit: 50 queries per second.\nSet one parameter: Email OR Phone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "findBySystemField"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "E-Mail (example: test@manychat.com)"
+                },
+                {
+                  "disabled": false,
+                  "key": "phone",
+                  "value": "<string>",
+                  "description": "Phone number (example: +15400000000)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21f932a4-ac2e-46b0-8cf7-a51a8c9b7f84",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "findBySystemField"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"string\",\n    \"page_id\": \"string\",\n    \"user_refs\": [\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      },\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      }\n    ],\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"profile_pic\": \"string\",\n    \"locale\": \"string\",\n    \"language\": \"string\",\n    \"timezone\": \"string\",\n    \"live_chat_url\": \"string\",\n    \"last_input_text\": \"string\",\n    \"optin_phone\": false,\n    \"phone\": \"string\",\n    \"optin_email\": false,\n    \"email\": \"string\",\n    \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n    \"is_followup_enabled\": true,\n    \"ig_username\": \"user_name\",\n    \"ig_id\": 6384638,\n    \"whatsapp_phone\": \"string\",\n    \"whatsapp_bsuid\": \"US.8234928392384832\",\n    \"whatsapp_username\": \"@username\",\n    \"optin_whatsapp\": true,\n    \"custom_fields\": [\n      {\n        \"id\": 2391,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"id\": 657,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"tags\": [\n      {\n        \"id\": 4817,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 146,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f43dc03-e969-45a5-a1e1-68040c0a5ca1",
+          "name": "Add tag to subscriber",
+          "request": {
+            "name": "Add tag to subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "addTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb016c25-266b-42b3-b389-eb4b4c9c3e5d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "addTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8ce64a6-d3d9-41d6-9a16-ba572be87a2d",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "addTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b817eaf-9f01-4668-bc1e-e404b5bae50c",
+          "name": "Add tag to subscriber",
+          "request": {
+            "name": "Add tag to subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "addTagByName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdb8a309-af43-413c-8825-d428cf2b441e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "addTagByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "234c256a-8be6-42d3-b926-d7e3a42df9e9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "addTagByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7172dcc8-ffd4-4a69-b802-63f928d767fc",
+          "name": "Remove tag from subscriber",
+          "request": {
+            "name": "Remove tag from subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "removeTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "020380cb-4fbf-4664-b65a-96cf7c75ea64",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "removeTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19b1f284-2d3c-4e47-9061-ddd4014cdf9f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "removeTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7809422-57cb-4ef0-9f3b-d9d556c04091",
+          "name": "Remove tag from subscriber",
+          "request": {
+            "name": "Remove tag from subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "removeTagByName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21ef3df7-325d-4452-91ed-2d47384abcb1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "removeTagByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2c2be08-bd57-41cb-92d9-eee7649354d2",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "removeTagByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"tag_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a76b995a-7dc5-407f-b5d9-c3373c93ffda",
+          "name": "Set custom field",
+          "request": {
+            "name": "Set custom field",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "setCustomField"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_id\": \"<integer>\",\n  \"field_value\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b560cfd-21e6-4c98-8f15-4102f65dd199",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomField"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_id\": \"<integer>\",\n  \"field_value\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24abf32d-0a89-46b8-a62d-f8ead1a113f5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomField"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_id\": \"<integer>\",\n  \"field_value\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d226d67a-434a-4328-bb38-576b83f300d2",
+          "name": "Set custom fields",
+          "request": {
+            "name": "Set custom fields",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "setCustomFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"fields\": [\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    },\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7570d845-0311-4c3a-8647-a818ab8f2f4a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"fields\": [\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    },\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c577d0f-0806-4c4b-af62-dedc0092c087",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"fields\": [\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    },\n    {\n      \"field_id\": \"<integer>\",\n      \"field_name\": \"<string>\",\n      \"field_value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64880dcb-c0a8-44e6-a076-9ebcf9329e29",
+          "name": "Set custom field by name",
+          "request": {
+            "name": "Set custom field by name",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "setCustomFieldByName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_name\": \"<string>\",\n  \"field_value\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5485fb6-25e2-4430-b491-655ddc89b64d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomFieldByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_name\": \"<string>\",\n  \"field_value\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "845c8f13-0f7c-4547-b613-21d150a9c4d2",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "setCustomFieldByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"field_name\": \"<string>\",\n  \"field_value\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9952680-7bb8-44ce-8b31-a7bf960b3be1",
+          "name": "Verify by signed request",
+          "request": {
+            "name": "Verify by signed request",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "verifyBySignedRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"signed_request\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2a65405-d1e3-4027-8995-2c4682aeb142",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "verifyBySignedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"signed_request\": \"_1SXnOuwXiUrcDRxI1D6Dvr55aiNusDNMxyHb8PQe7Y.eyJhbGdvcml0aG0iOiJIT2FDLVNIQTI1NiIsImNvbW11bml0eV9pZCI6bnVsbCwiaXNzdWVkX2F0IjoxNTU5MjE8NTQxLCJtZXRhZGF0YSI6bnVsbCwicGFnZV9pZCI6MjI4NjkwMDEyNDk2MTgxOSwicHNpZCI6IjIxNzI0OTkwNDI4Njc2MjIiLCJ0aHJlYWRfcGFydGljaXBhbnRfaWRzIjpudWxsLCJ0aHJlYWRfdHlwZSI6IlVTRVJfVE9fUEFHRSIsInRpZCI1IjIxNzI0OTkwNDI4Njc2MjIifQ\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e0cc4e0-d521-4d81-8bca-0286af5c46b3",
+          "name": "Create a Unified subscriber",
+          "request": {
+            "name": "Create a Unified subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "createSubscriber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"whatsapp_phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ac4912f-4da1-4ba6-b1e7-9ce52aec0bda",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "createSubscriber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"whatsapp_phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"string\",\n    \"page_id\": \"string\",\n    \"user_refs\": [\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      },\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      }\n    ],\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"profile_pic\": \"string\",\n    \"locale\": \"string\",\n    \"language\": \"string\",\n    \"timezone\": \"string\",\n    \"live_chat_url\": \"string\",\n    \"last_input_text\": \"string\",\n    \"optin_phone\": false,\n    \"phone\": \"string\",\n    \"optin_email\": false,\n    \"email\": \"string\",\n    \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n    \"is_followup_enabled\": true,\n    \"ig_username\": \"user_name\",\n    \"ig_id\": 6384638,\n    \"whatsapp_phone\": \"string\",\n    \"whatsapp_bsuid\": \"US.8234928392384832\",\n    \"whatsapp_username\": \"@username\",\n    \"optin_whatsapp\": true,\n    \"custom_fields\": [\n      {\n        \"id\": 2391,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"id\": 657,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"tags\": [\n      {\n        \"id\": 4817,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 146,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cf93023-fc49-45e7-981a-f5ae03927a74",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "createSubscriber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"whatsapp_phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b0fc992-5f81-42a2-b84e-39cb3eaa3d8b",
+          "name": "Update subscriber",
+          "request": {
+            "name": "Update subscriber",
+            "description": {
+              "content": "Rate limit: 10 queries per second",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fb",
+                "subscriber",
+                "updateSubscriber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a2a1e45-9fbc-4016-b36f-92d6a6d925d2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "updateSubscriber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"id\": \"string\",\n    \"page_id\": \"string\",\n    \"user_refs\": [\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      },\n      {\n        \"user_ref\": \"-1543835812530302162\",\n        \"opted_in\": \"2018-12-03T11:17:54+00:00\"\n      }\n    ],\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"profile_pic\": \"string\",\n    \"locale\": \"string\",\n    \"language\": \"string\",\n    \"timezone\": \"string\",\n    \"live_chat_url\": \"string\",\n    \"last_input_text\": \"string\",\n    \"optin_phone\": false,\n    \"phone\": \"string\",\n    \"optin_email\": false,\n    \"email\": \"string\",\n    \"subscribed\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_interaction\": \"'2018-07-02T00:00:00+02:00'\",\n    \"last_seen\": \"'2018-07-02T00:00:00+03:00'\",\n    \"is_followup_enabled\": true,\n    \"ig_username\": \"user_name\",\n    \"ig_id\": 6384638,\n    \"whatsapp_phone\": \"string\",\n    \"whatsapp_bsuid\": \"US.8234928392384832\",\n    \"whatsapp_username\": \"@username\",\n    \"optin_whatsapp\": true,\n    \"custom_fields\": [\n      {\n        \"id\": 2391,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"id\": 657,\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"tags\": [\n      {\n        \"id\": 4817,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 146,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a423785-40a4-4d5a-be7d-d29427611058",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fb",
+                    "subscriber",
+                    "updateSubscriber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriber_id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"has_opt_in_sms\": \"<boolean>\",\n  \"has_opt_in_email\": \"<boolean>\",\n  \"consent_phrase\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\",\n  \"details\": {\n    \"messages\": [\n      {\n        \"message\": \"string\"\n      },\n      {\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manychat.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "649c9b73-6eb4-490f-8dae-e55e8eee5d19",
+    "name": "ManyChat Subscriber API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ManyChat Subscriber API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Page_API). Authentication is an API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement; the provider's generated hash ID is preserved on each operation as `x-provider-operation-id`.\n\nContact Support:\n Name: ManyChat",
+      "type": "text/plain"
+    }
+  }
+}

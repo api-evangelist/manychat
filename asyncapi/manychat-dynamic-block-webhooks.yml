@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: https://manychat.github.io/dynamic_block_docs/
+spec_type: none
+asyncapi_published: false
+note: >-
+  ManyChat publishes no AsyncAPI document and no subscriber/event webhook catalogue — it does not push
+  events to you. Its entire asynchronous surface runs the other way: the "External Request" flow step calls
+  YOUR endpoint from inside a ManyChat automation, and expects a Dynamic Block JSON response back which
+  ManyChat then renders into the conversation. That makes ManyChat the CALLER and the integrator the
+  webhook receiver — the inverse of the usual provider webhook. The response contract is real, versioned
+  (`"version": "v2"`) and first-party, published by the ManyChat GitHub organization at
+  manychat.github.io/dynamic_block_docs, so it is captured here as the webhook surface. Nothing below is
+  fabricated; the message/action/button type lists are read verbatim from that reference.
+surface:
+  direction: outbound
+  mechanism: External Request flow step
+  caller: ManyChat
+  receiver: partner HTTP endpoint
+  transport: HTTPS
+  request_content_type: application/json
+  response_content_type: application/json
+  availability: Pro plan and above (the External Request block is a paid feature)
+  docs:
+    - https://manychat.github.io/dynamic_block_docs/
+    - https://help.manychat.com/hc/en-us/articles/14281285374364-Dev-Tools-External-request
+    - https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
+response_contract:
+  name: Dynamic Block
+  version: v2
+  envelope:
+    version: string, "v2"
+    content.messages: array, required, max 10
+    content.actions: array, optional, max 5
+    content.quick_replies: array, optional, max 11
+  limits:
+    messages: 10
+    quick_replies: 11
+    actions: 5
+message_types:
+  - {type: text, note: 'supports url, flow and node buttons'}
+  - {type: image, note: 'JPG, PNG, GIF on Messenger; supports url, call, buy, flow and node buttons'}
+  - {type: video}
+  - {type: audio}
+  - {type: file}
+  - {type: cards, note: gallery cards}
+button_types:
+  - {type: call}
+  - {type: url}
+  - {type: node, note: 'go to node — see the reference for channel caveats'}
+  - {type: flow, note: go to Flow}
+  - {type: buy}
+  - {type: dynamic_block_callback, note: calls the External Request endpoint again}
+action_types:
+  - {action: add_tag, effect: applies a page tag to the contact}
+  - {action: remove_tag, effect: removes a page tag from the contact}
+  - {action: set_field_value, effect: writes a custom field value on the contact}
+  - {action: unset_field_value, effect: clears a custom field value on the contact}
+quick_reply_types:
+  - {type: node}
+  - {type: flow}
+  - {type: dynamic_block_callback}
+channel_variants:
+  - {name: Response Reference for Facebook Automation, docs: 'https://manychat.github.io/dynamic_block_docs/'}
+  - {name: Response Reference for Instagram, WhatsApp, and Telegram Automation, docs: 'https://manychat.github.io/dynamic_block_docs/'}
+also_documented:
+  - External Message Callback
+  - Variables
+signing:
+  published: false
+  note: >-
+    No request-signing, shared-secret or verification contract is documented for the External Request call.
+    A receiver has no published way to prove the call came from ManyChat.
+retries:
+  published: false
+  note: No retry, backoff or delivery-guarantee contract is documented.
+gaps:
+  - No AsyncAPI document is published.
+  - No inbound event webhooks (subscriber created, message received, tag applied) are offered by the API.
+  - No request signing or replay protection is documented for the outbound call.
+  - No delivery/retry semantics are documented.

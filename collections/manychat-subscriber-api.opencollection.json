@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ManyChat Subscriber API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriber",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/getInfo",
+            "params": [
+              {
+                "name": "subscriber_id",
+                "value": "",
+                "type": "query",
+                "description": "Get subscriber info."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Find by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second.\nThis API method search subscribers by full name.\nList is limited by 100 subscribers."
+        },
+        {
+          "info": {
+            "name": "Get info by user ref",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/getInfoByUserRef",
+            "params": [
+              {
+                "name": "user_ref",
+                "value": "",
+                "type": "query",
+                "description": "Ref of subscriber"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get info by user ref"
+        },
+        {
+          "info": {
+            "name": "Find by custom field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findByCustomField",
+            "params": [
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "field_value",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second.\nThis API method only works with Text and Number types of Custom User Fields.\nResults are sorted by last Custom User Field value update for a specific user.\nList is limited by 100 elements."
+        },
+        {
+          "info": {
+            "name": "Find by system field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/subscriber/findBySystemField",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "E-Mail (example: test@manychat.com)"
+              },
+              {
+                "name": "phone",
+                "value": "",
+                "type": "query",
+                "description": "Phone number (example: +15400000000)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 50 queries per second.\nSet one parameter: Email OR Phone."
+        },
+        {
+          "info": {
+            "name": "Add tag to subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/addTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Add tag to subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/addTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Remove tag from subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/removeTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Remove tag from subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/removeTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set custom field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set custom fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set custom field by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/setCustomFieldByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Verify by signed request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/verifyBySignedRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Create a Unified subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/createSubscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Update subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/subscriber/updateSubscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

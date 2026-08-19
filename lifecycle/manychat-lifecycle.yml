@@ -1,0 +1,67 @@
+generated: '2026-08-13'
+method: searched
+source: https://status.manychat.com/summary.json
+docs: https://api.manychat.com/swagger
+versioning:
+  scheme: none
+  current: beta
+  in_url: false
+  in_header: false
+  docs: https://api.manychat.com/swagger
+  note: >-
+    `info.version` in the OpenAPI ManyChat publishes is the literal string "beta" and has been for the
+    life of the document. There is no version segment in the path (`/fb/page/...`, not `/v1/fb/page/...`),
+    no version header, and no dated pinning. Callers have no way to pin behaviour.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation policy, no RFC 8594 Sunset/Deprecation header support, and no dated removal notices are
+    published. Deprecation is communicated only as prose inside an operation description, and the one
+    example (getWidgets -> "Use getGrowthTools instead.") is not marked `deprecated: true` in the spec, so
+    no tooling can detect it.
+deprecated_operations:
+  - operation: openapi/manychat-page-api-openapi.yml#getWidgets
+    signal: prose-only
+    evidence: 'Operation description reads: "Use getGrowthTools instead."'
+    marked_deprecated_in_spec: false
+    replacement: getGrowthTools
+breaking_change_notices:
+  - date: '2020-03-04'
+    surface: sendContent
+    note: >-
+      "Attention! After March 4, 2020 requests without message tag may cause error" — published inside the
+      sendContent requestBody description. Still the only dated change notice in the entire contract.
+sla:
+  url: null
+  uptime_target: null
+  published: false
+  note: No public SLA or uptime commitment was found.
+status_page:
+  url: https://status.manychat.com
+  provider: Instatus
+  verified: probed
+  http_status: 200
+  machine_readable:
+    - {path: /summary.json, status: 200, format: json}
+    - {path: /history.atom, status: 200, format: atom}
+  subscriptions: [email, slack, microsoft-teams, google-chat, webhook, rss, atom, api]
+  note: >-
+    A real, machine-readable status page — the strongest operational-transparency signal ManyChat ships.
+    It covers the product (Instagram/Messenger/WhatsApp automation), not the API host specifically.
+changelog:
+  url: null
+  published: false
+  note: >-
+    No dated API changelog was found. `developers.manychat.com` resolves but 302s to the marketing
+    homepage, so there is no developer portal behind it. Product updates are posted to
+    https://community.manychat.com/product-updates, which is a community forum rather than a versioned
+    API changelog.
+evidence:
+  - {url: 'https://status.manychat.com', status: 200}
+  - {url: 'https://status.manychat.com/summary.json', status: 200}
+  - {url: 'https://status.manychat.com/history.atom', status: 200}
+  - {url: 'https://developers.manychat.com', status: 302, note: redirects to https://manychat.com/}
+  - {url: 'https://api.manychat.com/swagger/compileJson?type=Page_API', status: 200}

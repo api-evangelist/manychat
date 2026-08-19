@@ -1,0 +1,116 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for ManyChat Subscriber API
+  version: 1.0.0
+extends: openapi/manychat-subscriber-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-note: 'Captures the API Evangelist refinements applied on top of the Swagger document ManyChat publishes: a real production
+  server host (the provider ships an empty relative servers[] entry), readable operation IDs alongside the provider''s generated
+  hash IDs, the authentication key format, and explicit x-idempotent:false on every write because ManyChat publishes no idempotency
+  contract. The harvested original is never mutated.'
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment: '2026-08-13'
+    x-apievangelist-source: https://api.manychat.com/swagger/compileJson?type=Page_API
+    x-apievangelist-conventions: conventions/manychat-conventions.yml
+    x-apievangelist-errors: errors/manychat-problem-types.yml
+    x-apievangelist-rate-limits: rate-limits/manychat-rate-limits.yml
+    x-apievangelist-data-model: data-model/manychat-data-model.yml
+- target: $.servers
+  description: ManyChat publishes servers[] as a single empty relative URL. The production host is the one serving the Swagger
+    document.
+  update:
+  - url: https://api.manychat.com
+    description: Production
+- target: $.components.securitySchemes.Bearer
+  update:
+    x-key-format: Bearer <page-id>:<api-key>
+    x-issued-at: ManyChat dashboard > page Settings > API
+    x-scope: one API key per connected page
+- target: $.paths['/fb/subscriber/getInfo'].get
+  description: API Evangelist refinement of GET /fb/subscriber/getInfo
+  update:
+    x-apievangelist-operation-id: getSubscriberInfo
+    x-provider-operation-id: ae51a27b65b7ecf39438af38db0f27ba
+- target: $.paths['/fb/subscriber/findByName'].get
+  description: API Evangelist refinement of GET /fb/subscriber/findByName
+  update:
+    x-apievangelist-operation-id: findSubscriberByName
+    x-provider-operation-id: e5c671d1661acff9be0e8bcfdd59f1e8
+- target: $.paths['/fb/subscriber/getInfoByUserRef'].get
+  description: API Evangelist refinement of GET /fb/subscriber/getInfoByUserRef
+  update:
+    x-apievangelist-operation-id: getSubscriberByUserRef
+    x-provider-operation-id: 782cc8abe7878dc73026b6bef44f14b2
+- target: $.paths['/fb/subscriber/findByCustomField'].get
+  description: API Evangelist refinement of GET /fb/subscriber/findByCustomField
+  update:
+    x-apievangelist-operation-id: findByCustomField
+    x-provider-operation-id: 9fc380dcb49bb134b9405d4269896f56
+- target: $.paths['/fb/subscriber/findBySystemField'].get
+  description: API Evangelist refinement of GET /fb/subscriber/findBySystemField
+  update:
+    x-apievangelist-operation-id: findBySystemField
+    x-provider-operation-id: ef59064a933ef7464083a39c520a274b
+- target: $.paths['/fb/subscriber/addTag'].post
+  description: API Evangelist refinement of POST /fb/subscriber/addTag
+  update:
+    x-apievangelist-operation-id: addTag
+    x-provider-operation-id: ee797ad59ec8545bed43add11390b165
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/addTagByName'].post
+  description: API Evangelist refinement of POST /fb/subscriber/addTagByName
+  update:
+    x-apievangelist-operation-id: addTagByName
+    x-provider-operation-id: 34ad004a12043ccbfee2faf1d290d30f
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/removeTag'].post
+  description: API Evangelist refinement of POST /fb/subscriber/removeTag
+  update:
+    x-apievangelist-operation-id: removeSubscriberTag
+    x-provider-operation-id: 09f35f7c1e6013311f36e3965dec650c
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/removeTagByName'].post
+  description: API Evangelist refinement of POST /fb/subscriber/removeTagByName
+  update:
+    x-apievangelist-operation-id: removeSubscriberTagByName
+    x-provider-operation-id: 59cef9685d8978968b28376db0123be4
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/setCustomField'].post
+  description: API Evangelist refinement of POST /fb/subscriber/setCustomField
+  update:
+    x-apievangelist-operation-id: setCustomField
+    x-provider-operation-id: 81138a426b0903687848fdf8bdde6aa9
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/setCustomFields'].post
+  description: API Evangelist refinement of POST /fb/subscriber/setCustomFields
+  update:
+    x-apievangelist-operation-id: setCustomFields
+    x-provider-operation-id: 4d01076149250e9e47f3b8aa7dc53baa
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/setCustomFieldByName'].post
+  description: API Evangelist refinement of POST /fb/subscriber/setCustomFieldByName
+  update:
+    x-apievangelist-operation-id: setCustomFieldByName
+    x-provider-operation-id: adc69e1e87197b5f31c80403a3913468
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/verifyBySignedRequest'].post
+  description: API Evangelist refinement of POST /fb/subscriber/verifyBySignedRequest
+  update:
+    x-apievangelist-operation-id: verifyBySignedRequest
+    x-provider-operation-id: b14c21e0143af0449cfc94e58731c5a8
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/createSubscriber'].post
+  description: API Evangelist refinement of POST /fb/subscriber/createSubscriber
+  update:
+    x-apievangelist-operation-id: createSubscriber
+    x-provider-operation-id: f42eb3580f33178fdf9d87f0c778f86e
+    x-idempotent: false
+- target: $.paths['/fb/subscriber/updateSubscriber'].post
+  description: API Evangelist refinement of POST /fb/subscriber/updateSubscriber
+  update:
+    x-apievangelist-operation-id: updateSubscriber
+    x-provider-operation-id: 3ab84a004f4a5942e7a5368c2b807d19
+    x-idempotent: false

@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/manychat-page-api-swagger-original.json
+docs: https://api.manychat.com/swagger
+note: >-
+  Cross-cutting runtime semantics for the ManyChat API, derived from the Swagger document ManyChat serves
+  at https://api.manychat.com/swagger and from the first-party Dynamic Block reference at
+  https://manychat.github.io/dynamic_block_docs/. Where a convention is ABSENT that absence is recorded
+  explicitly rather than omitted — several of the things an agent most needs (idempotency, pagination,
+  rate-limit headers, auth-failure semantics) are genuinely not published by ManyChat.
+authentication:
+  style: bearer-token
+  scheme_name: Bearer
+  header: Authorization
+  format: 'Bearer <page-id>:<api-key>'
+  issued_at: ManyChat dashboard > page Settings > API
+  scope: one API key per connected page; there is no account-wide or cross-page credential
+  rotation: undocumented
+  oauth2: false
+  detail: authentication/manychat-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    ManyChat publishes no idempotency key, no request-id echo, and no de-duplication contract. Every write
+    is at-least-once from the caller's point of view. The `*ByName` variants (setBotFieldByName,
+    setCustomFieldByName, addTagByName, removeTagByName) are name-addressed upserts and are therefore
+    naturally repeatable, but that is a property of those specific operations, not an idempotency
+    guarantee — createTag, createCustomField, createBotField and createSubscriber are not safe to retry
+    blind, and sendContent / sendFlow will deliver a duplicate message on retry.
+pagination:
+  supported: false
+  style: none
+  detail: >-
+    No cursor, offset, page or limit parameter exists on any operation. Three list/search operations are
+    hard-capped server-side with no way to reach the remainder.
+  hard_caps:
+    - operation: findSubscriberByName
+      cap: 100 subscribers
+      sort: undocumented
+    - operation: findByCustomField
+      cap: 100 elements
+      sort: last Custom User Field value update for a specific user
+    - operation: getFlows
+      cap: undocumented
+  collection_operations_without_caps: [getTags, getCustomFields, getBotFields, getGrowthTools, getOtnTopics, getWidgets]
+field_expansion:
+  supported: false
+  detail: >-
+    No `expand`, `fields` or sparse-fieldset parameter. Subscriber responses always embed the full
+    `tags[]` and `custom_fields[]` arrays; there is no way to ask for less or for more.
+metadata:
+  supported: true
+  mechanism: custom fields and bot fields
+  detail: >-
+    ManyChat's equivalent of arbitrary metadata is the CustomField (per-subscriber) and BotField
+    (per-page global) system. Both are typed (text/number/date/datetime/boolean) and must be defined
+    before use — this is a schema'd metadata system, not a free-form key/value bag.
+request_tracing:
+  request_id_header: null
+  correlation: none
+  detail: ManyChat publishes no request-id or trace header on request or response.
+versioning:
+  scheme: none
+  current: beta
+  detail: >-
+    `info.version` in the published spec is the literal string "beta". There is no version segment in the
+    URL path, no version header, and no date-based pinning. The Dynamic Block message payload carries its
+    own independent version field (`"version": "v2"`), which is the only versioned surface ManyChat ships.
+  dynamic_block_version: v2
+  detail_ref: lifecycle/manychat-lifecycle.yml
+error_envelope:
+  content_type: application/json
+  rfc9457: false
+  status_codes_used: [200, 400]
+  shapes:
+    - name: ResponseError
+      fields: [status, message, 'details.messages[]']
+      machine_code: false
+    - name: ResponseErrorWithCode
+      fields: [status, message, code]
+      machine_code: true
+  success_envelope:
+    fields: [status, data]
+    detail: >-
+      Success responses wrap the payload as `{"status":"success","data":{...}}`. Note that a failure is
+      also HTTP-negotiated as 400 with `{"status":"error"}` — an agent must check the `status` string,
+      not only the HTTP code, because ManyChat declares no other status codes at all.
+  detail: errors/manychat-problem-types.yml
+rate_limit_signaling:
+  headers_published: false
+  exhaustion_status: undocumented
+  retry_after: false
+  detail: >-
+    Per-operation limits are published in prose inside each operation description (10-100 queries per
+    second depending on the operation, plus a 100/hour per-subscriber cap on sendFlow), but there is no
+    runtime signal: no RateLimit-* headers, no documented 429, no Retry-After.
+  detail_ref: rate-limits/manychat-rate-limits.yml
+content_types:
+  request: application/json
+  response: application/json
+  detail: Every operation with a body accepts and returns application/json only.
+webhooks:
+  direction: outbound-to-partner
+  detail: >-
+    ManyChat does not push subscriber/event webhooks. Its outbound HTTP surface is the "External Request"
+    flow step, which calls a partner endpoint and expects the Dynamic Block response format back.
+  detail_ref: asyncapi/manychat-dynamic-block-webhooks.yml
+cross_links:
+  authentication: authentication/manychat-authentication.yml
+  errors: errors/manychat-problem-types.yml
+  rate_limits: rate-limits/manychat-rate-limits.yml
+  lifecycle: lifecycle/manychat-lifecycle.yml
+  data_model: data-model/manychat-data-model.yml

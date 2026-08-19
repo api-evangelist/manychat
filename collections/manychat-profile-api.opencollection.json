@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ManyChat Profile API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate single use link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/user/template/generateSingleUseLink",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate single use link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

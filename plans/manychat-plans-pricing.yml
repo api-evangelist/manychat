@@ -1,0 +1,42 @@
+generated: '2026-08-13'
+method: probed
+source: https://manychat.com/pricing
+plan_count: 0
+note: >-
+  ManyChat DOES publish a public pricing page, but we could not read it and therefore record nothing from
+  it. https://manychat.com/pricing returns HTTP 403 with a Cloudflare managed-challenge interstitial
+  ("Just a moment...") to every non-browser client, including requests carrying a full desktop browser
+  user-agent and header set. plan_count is 0 because zero tiers were verified against a ManyChat-published
+  source — NOT because ManyChat has no plans. Third-party blogs summarise the tiers, but a resold summary
+  is not a provider publication and is not recorded here as one. The API-relevant facts below are the ones
+  ManyChat itself publishes, in its own OpenAPI and help centre.
+plans: []
+evidence:
+  - {url: 'https://manychat.com/pricing', status: 403, note: cloudflare-managed-challenge}
+  - {url: 'https://manychat.com/', status: 403, note: cloudflare-managed-challenge}
+  - {url: 'https://api.manychat.com/swagger/compileJson?type=Page_API', status: 200}
+provider_published_plan_signals:
+  note: >-
+    These come from ManyChat's own machine-readable surface, not from a pricing page, so they are recorded
+    even though the tier list is not.
+  signals:
+  - signal: Page.is_pro
+    type: boolean
+    source: 'components.schemas.Page.is_pro in https://api.manychat.com/swagger/compileJson?type=Page_API'
+    detail: >-
+      The API models a single boolean Pro flag per connected page. Whatever the marketing tier ladder
+      looks like, the contract itself only distinguishes Pro from not-Pro.
+  - signal: API access is gated on a paid tier
+    source: https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
+    detail: >-
+      ManyChat's Dev Tools documentation states the public API, the External Request action and most
+      integrations require Pro or above. The API is not available on the free tier.
+  - signal: billing unit is Active Contacts
+    detail: >-
+      ManyChat prices on unique contacts messaged in a month rather than on API calls. There is no
+      per-request metering, no usage endpoint, and no quota field anywhere in the API contract — an agent
+      cannot read its own consumption from the API.
+api_metering:
+  usage_endpoint: false
+  quota_in_api: false
+  overage_visible_in_api: false

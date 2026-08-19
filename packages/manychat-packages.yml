@@ -1,0 +1,112 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry probes against repo.packagist.org, registry.npmjs.org and pypi.org, plus the
+  https://github.com/manychat GitHub organization listing, 2026-08-13
+note: >-
+  ManyChat ships exactly one first-party API client library — a PHP SDK — and Packagist reports it
+  ABANDONED. Its last release, v1.0.5, is dated 2020-12-11, and the GitHub repository has not been pushed
+  to since the same day. That is a five-and-a-half year gap against an API whose own contract still carries
+  a "beta" version string. Every other ManyChat-branded package in a public registry is either a
+  design-asset bundle (@manychat/icons) or third-party. There is no official JavaScript/TypeScript, Python,
+  Ruby, Go, Java or .NET client.
+official_sdk_count: 1
+package_count: 6
+packages:
+  - language: php
+    registry: packagist
+    name: manychat/manychat-api
+    url: https://packagist.org/packages/manychat/manychat-api
+    repository: https://github.com/manychat/manychat-api-php
+    install: composer require manychat/manychat-api
+    official: true
+    api_client: true
+    version: v1.0.5
+    published: '2020-12-11'
+    abandoned: true
+    downloads: 16300
+    note: >-
+      The only first-party ManyChat API client. Flagged `abandoned` on Packagist. Last release
+      2020-12-11; GitHub last push 2020-12-11. Predates the Instagram, WhatsApp and TikTok channels the
+      current API models on the Subscriber object, so it cannot cover the live contract.
+  - language: javascript
+    registry: npm
+    name: '@manychat/icons'
+    url: https://www.npmjs.com/package/@manychat/icons
+    repository: https://github.com/manychat/icons
+    install: npm install @manychat/icons
+    official: true
+    api_client: false
+    version: 4.41.1
+    published: '2026-08-05'
+    note: >-
+      First-party and actively maintained (published under the `manychat-owner` npm account), but it is
+      the Manychat icon/design-asset bundle, NOT an API client. Recorded here for completeness; it is not
+      counted toward official_sdk_count. The contrast is the finding: ManyChat has shipped 4.41.1 of its
+      icon bundle this month while its only API SDK has been abandoned since 2020.
+  - language: php
+    registry: packagist
+    name: socheatsok78/manychat-block-sdk
+    url: https://packagist.org/packages/socheatsok78/manychat-block-sdk
+    repository: https://github.com/socheatsok78/manychat-block-sdk
+    install: composer require socheatsok78/manychat-block-sdk
+    official: false
+    api_client: false
+    version: null
+    published: null
+    abandoned: true
+    downloads: 4703
+    note: >-
+      Third-party helper for building Dynamic Block responses. Flagged abandoned on Packagist. Version
+      metadata not resolved on the p2 endpoint at probe time — recorded null rather than guessed.
+  - language: php
+    registry: packagist
+    name: navvygator/manychat-php-sdk
+    url: https://packagist.org/packages/navvygator/manychat-php-sdk
+    repository: https://github.com/navvygator/manychat-php-sdk
+    install: composer require navvygator/manychat-php-sdk
+    official: false
+    api_client: true
+    version: null
+    published: null
+    downloads: 0
+    note: 'Self-described "Unofficial PHP SDK for ManyChat API". Zero downloads.'
+  - language: python
+    registry: pypi
+    name: manychat-python
+    url: https://pypi.org/project/manychat-python/
+    repository: https://github.com/juanrios15/manychat-python
+    install: pip install manychat-python
+    official: false
+    api_client: true
+    version: 0.1.4
+    published: '2023-10-12'
+    note: Community wrapper by Juan Carlos Rios. Last release 2023-10-12.
+  - language: python
+    registry: pypi
+    name: manychat-api-python
+    url: https://pypi.org/project/manychat-api-python/
+    official: false
+    api_client: true
+    version: 0.0.1
+    published: null
+    note: >-
+      Community package at 0.0.1. Release date not resolved from the PyPI JSON endpoint at probe time;
+      recorded null rather than guessed.
+absent:
+  - {language: javascript, registry: npm, note: no first-party ManyChat API client on npm}
+  - {language: python, registry: pypi, note: no first-party ManyChat API client on PyPI}
+  - {language: ruby, registry: rubygems, note: none found}
+  - {language: go, registry: pkg.go.dev, note: none found}
+  - {language: java, registry: maven-central, note: none found}
+  - {language: dotnet, registry: nuget, note: none found}
+  - {language: rust, registry: crates.io, note: none found}
+github_org:
+  url: https://github.com/manychat
+  public_repos:
+    - {name: manychat-api-php, language: PHP, pushed: '2020-12-11', description: Manychat API PHP library}
+    - {name: dynamic_block_docs, pushed: '2023-01-31', description: 'Dynamic Block response-format reference (GitHub Pages)'}
+    - {name: .github, pushed: '2025-03-19', description: Manychat Public Info}
+  note: >-
+    Three public repositories, none of them an actively maintained client library. The `icons` repository
+    backing @manychat/icons is not public in the org listing.

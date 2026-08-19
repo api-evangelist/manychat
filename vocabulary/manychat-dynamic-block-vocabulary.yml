@@ -1,0 +1,58 @@
+generated: '2026-08-13'
+method: searched
+source: https://manychat.github.io/dynamic_block_docs/
+note: >-
+  ManyChat publishes one controlled vocabulary: the Dynamic Block v2 response format, hosted by the
+  ManyChat GitHub organization. It is the closed set of message, button, action and quick-reply types a
+  partner endpoint may return into a ManyChat conversation, and it is the only versioned surface ManyChat
+  ships (`"version": "v2"`). Every term below is read verbatim from that reference; nothing is inferred.
+  ManyChat publishes no JSON Schema for it — the vocabulary is prose plus examples.
+vocabulary:
+  name: ManyChat Dynamic Block
+  version: v2
+  machine_readable_schema: false
+  docs:
+    - https://manychat.github.io/dynamic_block_docs/
+terms:
+  - group: message.type
+    values:
+      - {term: text, definition: A plain text message. Supports url, flow and node buttons.}
+      - {term: image, definition: 'An image file. Messenger supports JPG, PNG and GIF. Supports url, call, buy, flow and node buttons.'}
+      - {term: video, definition: A video file message.}
+      - {term: audio, definition: An audio file message.}
+      - {term: file, definition: A generic file attachment.}
+      - {term: cards, definition: A gallery of cards.}
+  - group: button.type
+    values:
+      - {term: call, definition: Dials a phone number.}
+      - {term: url, definition: Opens an external link.}
+      - {term: node, definition: Jumps to a content node in the current automation. Channel caveats apply.}
+      - {term: flow, definition: Jumps to another automation (flow).}
+      - {term: buy, definition: Initiates a purchase.}
+      - {term: dynamic_block_callback, definition: Calls the External Request endpoint again.}
+  - group: action.action
+    values:
+      - {term: add_tag, definition: Applies a page tag to this contact.}
+      - {term: remove_tag, definition: Removes a page tag from this contact only (not from the page).}
+      - {term: set_field_value, definition: Writes a custom field value on this contact.}
+      - {term: unset_field_value, definition: Clears a custom field value on this contact.}
+  - group: quick_reply.type
+    values:
+      - {term: node, definition: Quick reply that jumps to a content node.}
+      - {term: flow, definition: Quick reply that jumps to an automation.}
+      - {term: dynamic_block_callback, definition: Quick reply that calls the External Request endpoint again.}
+  - group: field.type
+    source: 'components.schemas.CustomField.type / BotField.type in https://api.manychat.com/swagger/compileJson?type=Page_API'
+    values:
+      - {term: text}
+      - {term: number}
+      - {term: date}
+      - {term: datetime}
+      - {term: boolean}
+cardinality_rules:
+  messages: {max: 10}
+  quick_replies: {max: 11}
+  actions: {max: 5}
+channel_variants:
+  - Response Reference for Facebook Automation
+  - Response Reference for Instagram, WhatsApp, and Telegram Automation

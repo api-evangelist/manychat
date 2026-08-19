@@ -1,0 +1,296 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ManyChat Page API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getInfo",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Create tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getTags",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Remove tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/removeTag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second.\nRemoves specified tag from the page and the page's subscribers.\nThis action can not be undone."
+        },
+        {
+          "info": {
+            "name": "Remove tag by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/removeTagByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second.\nRemoves specified tag from the page and the page's subscribers.\nThis action can not be undone."
+        },
+        {
+          "info": {
+            "name": "Get widgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getWidgets",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second.\nUse getGrowthTools instead."
+        },
+        {
+          "info": {
+            "name": "Create custom field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createCustomField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get growth tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getGrowthTools",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getFlows",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get custom fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getCustomFields",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get otn topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getOtnTopics",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Get bot fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manychat.com/fb/page/getBotFields",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 100 queries per second"
+        },
+        {
+          "info": {
+            "name": "Create bot field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/createBotField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set bot field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotField",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set bot field by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotFieldByName",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        },
+        {
+          "info": {
+            "name": "Set bot fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manychat.com/fb/page/setBotFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rate limit: 10 queries per second"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

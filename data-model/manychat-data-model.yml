@@ -1,0 +1,229 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/manychat-page-api-swagger-original.json
+note: >-
+  Entity graph derived from `components.schemas` and the id-reference fields in the OpenAPI ManyChat
+  publishes at https://api.manychat.com/swagger. ManyChat's model is rooted on the Page (a connected
+  Facebook/Instagram/WhatsApp channel), which owns every other object; the Subscriber is the transactional
+  centre. There is no cross-page addressing in the public API — every API key is scoped to one page, so
+  `page_id` is effectively constant for a given credential.
+root_entity: Page
+id_conventions:
+  - entity: Page
+    field: id
+    type: integer
+    note: This is the Facebook Page ID, not a ManyChat-internal ID.
+  - entity: Subscriber
+    field: id
+    type: string
+    note: Numeric-looking but typed as a string in the spec.
+  - entity: Tag
+    field: id
+    type: integer
+  - entity: CustomField
+    field: id
+    type: integer
+  - entity: BotField
+    field: id
+    type: integer
+  - entity: Flow
+    field: ns
+    type: string
+    note: '"Automation namespace" — the unique Automation ID; not an integer id like the other entities.'
+  - entity: Folder
+    field: id
+    type: integer
+  - entity: GrowthTool
+    field: id
+    type: integer
+  - entity: OtnTopic
+    field: id
+    type: integer
+  - entity: SubscriberRefField
+    field: user_ref
+    type: string
+    note: >-
+      Pre-subscriber identity issued by the Messenger Checkbox / Customer Chat plugin. Resolves to a
+      Subscriber only after opt-in completes (see error codes 2011/2012).
+entities:
+  - name: Page
+    description: A connected channel (Facebook Page / Instagram account / WhatsApp number) and its plan state.
+    schema: '#/components/schemas/Page'
+    fields: [id, name, category, avatar_link, username, about, description, is_pro, timezone]
+    read_by: [getPageInfo]
+  - name: Tag
+    description: A page-level label that can be applied to subscribers.
+    schema: '#/components/schemas/Tag'
+    fields: [id, name]
+    read_by: [getTags]
+    written_by: [createTag, removeTag, removeTagByName]
+  - name: CustomField
+    description: A page-level custom user field definition (text / number / date / datetime / boolean).
+    schema: '#/components/schemas/CustomField'
+    fields: [id, name, type, description]
+    read_by: [getCustomFields]
+    written_by: [createCustomField]
+  - name: SubscriberCustomField
+    description: The value a CustomField holds for one Subscriber.
+    schema: '#/components/schemas/SubscriberCustomField'
+    fields: [id, name, type, description, value]
+    written_by: [setCustomField, setCustomFields, setCustomFieldByName]
+  - name: BotField
+    description: A page-level global variable (bot field) shared across all flows.
+    schema: '#/components/schemas/BotField'
+    fields: [id, name, type, description, value]
+    read_by: [getBotFields]
+    written_by: [createBotField, setBotField, setBotFieldByName, setBotFields]
+  - name: Flow
+    description: An automation. Addressed by its namespace `ns`, not a numeric id.
+    schema: '#/components/schemas/Flow'
+    fields: [ns, name, folder_id]
+    read_by: [getFlows]
+    used_by: [sendFlow]
+  - name: Folder
+    description: A container that groups Flows.
+    schema: '#/components/schemas/Folder'
+    fields: [id, name, parent_id]
+    read_by: [getFlows]
+  - name: GrowthTool
+    description: An acquisition widget (the successor naming for "widgets").
+    schema: '#/components/schemas/GrowthTool'
+    fields: [id, name, type]
+    read_by: [getGrowthTools, getWidgets]
+  - name: OtnTopic
+    description: A One-Time Notification topic a subscriber can grant a send token for.
+    schema: '#/components/schemas/OtnTopic'
+    fields: [id, name, description]
+    read_by: [getOtnTopics]
+    used_by: [sendContent]
+  - name: Subscriber
+    description: A contact on a page, across Messenger, Instagram and WhatsApp identities.
+    schema: '#/components/schemas/Subscriber'
+    fields:
+      - id
+      - page_id
+      - user_refs
+      - first_name
+      - last_name
+      - name
+      - gender
+      - profile_pic
+      - locale
+      - language
+      - timezone
+      - live_chat_url
+      - last_input_text
+      - optin_phone
+      - phone
+      - optin_email
+      - email
+      - subscribed
+      - last_interaction
+      - last_seen
+      - is_followup_enabled
+      - ig_username
+      - ig_id
+      - whatsapp_phone
+      - whatsapp_bsuid
+      - whatsapp_username
+      - optin_whatsapp
+      - custom_fields
+      - tags
+    read_by:
+      - getSubscriberInfo
+      - findSubscriberByName
+      - getSubscriberByUserRef
+      - findByCustomField
+      - findBySystemField
+    written_by: [createSubscriber, updateSubscriber]
+  - name: SubscriberRefField
+    description: A pending Messenger `user_ref` opt-in attached to a Subscriber.
+    schema: '#/components/schemas/SubscriberRefField'
+    fields: [user_ref, opted_in]
+relationships:
+  - from: Page
+    to: Subscriber
+    kind: has_many
+    via: page_id
+    evidence: Subscriber.page_id
+  - from: Subscriber
+    to: Page
+    kind: belongs_to
+    via: page_id
+    evidence: Subscriber.page_id
+  - from: Subscriber
+    to: Tag
+    kind: has_many
+    via: tags
+    evidence: Subscriber.tags -> Tag[]
+  - from: Subscriber
+    to: SubscriberCustomField
+    kind: has_many
+    via: custom_fields
+    evidence: Subscriber.custom_fields -> SubscriberCustomField[]
+  - from: Subscriber
+    to: SubscriberRefField
+    kind: has_many
+    via: user_refs
+    evidence: Subscriber.user_refs -> SubscriberRefField[]
+  - from: Page
+    to: Tag
+    kind: has_many
+    via: getTags
+    evidence: createTag/getTags are page-scoped operations
+  - from: Page
+    to: CustomField
+    kind: has_many
+    via: getCustomFields
+    evidence: createCustomField/getCustomFields are page-scoped operations
+  - from: Page
+    to: BotField
+    kind: has_many
+    via: getBotFields
+    evidence: createBotField/getBotFields are page-scoped operations
+  - from: Page
+    to: Flow
+    kind: has_many
+    via: getFlows
+    evidence: getFlows is page-scoped
+  - from: Folder
+    to: Flow
+    kind: has_many
+    via: folder_id
+    evidence: Flow.folder_id
+  - from: Flow
+    to: Folder
+    kind: belongs_to
+    via: folder_id
+    evidence: Flow.folder_id
+  - from: Folder
+    to: Folder
+    kind: belongs_to
+    via: parent_id
+    evidence: Folder.parent_id — folders nest
+  - from: Page
+    to: GrowthTool
+    kind: has_many
+    via: getGrowthTools
+    evidence: getGrowthTools is page-scoped
+  - from: Page
+    to: OtnTopic
+    kind: has_many
+    via: getOtnTopics
+    evidence: getOtnTopics is page-scoped
+  - from: SubscriberCustomField
+    to: CustomField
+    kind: belongs_to
+    via: id
+    evidence: >-
+      SubscriberCustomField carries the same id/name/type triple as CustomField plus a value; it is the
+      per-subscriber instance of the page-level definition.
+channel_identities:
+  note: >-
+    A single Subscriber carries per-channel identity fields. This is the one place the model is genuinely
+    multi-channel, and it is undocumented outside the schema.
+  messenger: [id, user_refs, profile_pic]
+  instagram: [ig_username, ig_id]
+  whatsapp: [whatsapp_phone, whatsapp_bsuid, whatsapp_username, optin_whatsapp]
+  email: [email, optin_email]
+  sms: [phone, optin_phone]

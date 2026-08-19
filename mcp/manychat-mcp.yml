@@ -1,0 +1,151 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/_original/manychat-page-api-swagger-original.json
+note: >-
+  ManyChat ships NO first-party MCP server. Probes for a hosted endpoint returned nothing usable:
+  https://api.manychat.com/mcp is a genuine 404, and https://mcp.manychat.com/mcp and
+  https://manychat.com/mcp are behind the same Cloudflare challenge that guards the marketing site (403,
+  "Just a moment..."), with no DNS record or documentation anywhere indicating an MCP product. Several
+  third-party ManyChat MCP servers exist (see community_servers below) but none is published by ManyChat,
+  so none is recorded as the provider's agent surface. The tools[] below are DERIVED candidates — one per
+  OpenAPI operation ManyChat publishes — and describe what a server would expose, not what anyone ships.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: probed
+  note: >-
+    mode is `none` because no ManyChat-published server exists in either form. `auth: api-key` records
+    what any server would have to use — the per-page `Authorization: Bearer <page-id>:<api-key>` token —
+    not an observed MCP auth flow.
+probes:
+  - {url: 'https://api.manychat.com/mcp', method: POST, body: 'tools/list', status: 404}
+  - {url: 'https://mcp.manychat.com/mcp', method: POST, body: 'tools/list', status: 403, note: cloudflare-challenge}
+  - {url: 'https://manychat.com/mcp', method: POST, body: 'tools/list', status: 403, note: cloudflare-challenge}
+community_servers:
+  note: >-
+    Recorded for accuracy only — these are third-party projects, NOT a ManyChat agent surface, and none is
+    referenced by ManyChat's own documentation.
+  servers:
+  - {name: manychat-mcp, url: 'https://github.com/AleemHaider/manychat-mcp', official: false}
+  - {name: manychat-mcp, url: 'https://github.com/ronstar83/manychat-mcp', official: false}
+  - {name: fabienbutz-manychat, url: 'https://www.pulsemcp.com/servers/fabienbutz-manychat', official: false}
+  - {name: biznomad-manychat-mcp, url: 'https://lobehub.com/mcp/biznomad-manychat-mcp', official: false}
+tools:
+  - name: get_page_info
+    description: Get information about the connected ManyChat page.
+    source_operation: openapi/manychat-page-api-openapi.yml#getPageInfo
+  - name: list_tags
+    description: List the tags defined on the page.
+    source_operation: openapi/manychat-page-api-openapi.yml#getTags
+  - name: create_tag
+    description: Create a new page tag.
+    source_operation: openapi/manychat-page-api-openapi.yml#createTag
+  - name: remove_tag
+    description: Remove a tag from the page and all its subscribers by tag id. Not reversible.
+    source_operation: openapi/manychat-page-api-openapi.yml#removeTag
+  - name: remove_tag_by_name
+    description: Remove a tag from the page and all its subscribers by name. Not reversible.
+    source_operation: openapi/manychat-page-api-openapi.yml#removeTagByName
+  - name: list_growth_tools
+    description: List the page's growth tools.
+    source_operation: openapi/manychat-page-api-openapi.yml#getGrowthTools
+  - name: list_widgets
+    description: List the page's widgets. Superseded by list_growth_tools.
+    source_operation: openapi/manychat-page-api-openapi.yml#getWidgets
+  - name: list_flows
+    description: List the page's automations (flows) and folders.
+    source_operation: openapi/manychat-page-api-openapi.yml#getFlows
+  - name: list_custom_fields
+    description: List the page's custom user field definitions.
+    source_operation: openapi/manychat-page-api-openapi.yml#getCustomFields
+  - name: create_custom_field
+    description: Create a custom user field definition on the page.
+    source_operation: openapi/manychat-page-api-openapi.yml#createCustomField
+  - name: list_otn_topics
+    description: List One-Time Notification topics available on the page.
+    source_operation: openapi/manychat-page-api-openapi.yml#getOtnTopics
+  - name: list_bot_fields
+    description: List the page's global bot fields.
+    source_operation: openapi/manychat-page-api-openapi.yml#getBotFields
+  - name: create_bot_field
+    description: Create a global bot field on the page.
+    source_operation: openapi/manychat-page-api-openapi.yml#createBotField
+  - name: set_bot_field
+    description: Set a global bot field value by field id.
+    source_operation: openapi/manychat-page-api-openapi.yml#setBotField
+  - name: set_bot_field_by_name
+    description: Set a global bot field value by field name.
+    source_operation: openapi/manychat-page-api-openapi.yml#setBotFieldByName
+  - name: set_bot_fields
+    description: Set several global bot field values in one call.
+    source_operation: openapi/manychat-page-api-openapi.yml#setBotFields
+  - name: send_content
+    description: Send a Dynamic Block content payload to a subscriber. Requires a message tag outside the 24h window.
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContent
+  - name: send_content_by_user_ref
+    description: Send a Dynamic Block content payload to a pending user_ref opt-in.
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendContentByUserRef
+  - name: send_flow
+    description: Trigger an automation (flow) for a subscriber.
+    source_operation: openapi/manychat-sending-api-openapi.yml#sendFlow
+  - name: get_subscriber
+    description: Get a subscriber by id.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#getSubscriberInfo
+  - name: find_subscriber_by_name
+    description: Search subscribers by full name. Capped at 100 results, no pagination.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#findSubscriberByName
+  - name: get_subscriber_by_user_ref
+    description: Resolve a Messenger user_ref to a subscriber.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#getSubscriberByUserRef
+  - name: find_subscribers_by_custom_field
+    description: Find subscribers by a text or number custom field value. Capped at 100 results.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#findByCustomField
+  - name: find_subscriber_by_system_field
+    description: Find a subscriber by email OR phone (exactly one).
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#findBySystemField
+  - name: add_subscriber_tag
+    description: Add a tag to a subscriber by tag id.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#addTag
+  - name: add_subscriber_tag_by_name
+    description: Add a tag to a subscriber by tag name, creating it if needed.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#addTagByName
+  - name: remove_subscriber_tag
+    description: Remove a tag from a subscriber by tag id.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#removeSubscriberTag
+  - name: remove_subscriber_tag_by_name
+    description: Remove a tag from a subscriber by tag name.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#removeSubscriberTagByName
+  - name: set_subscriber_custom_field
+    description: Set one custom field value on a subscriber by field id.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#setCustomField
+  - name: set_subscriber_custom_fields
+    description: Set several custom field values on a subscriber in one call.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#setCustomFields
+  - name: set_subscriber_custom_field_by_name
+    description: Set one custom field value on a subscriber by field name.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#setCustomFieldByName
+  - name: verify_by_signed_request
+    description: Verify a subscriber from a Messenger signed request payload.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#verifyBySignedRequest
+  - name: create_subscriber
+    description: Create a subscriber on the page.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#createSubscriber
+  - name: update_subscriber
+    description: Update an existing subscriber.
+    source_operation: openapi/manychat-subscriber-api-openapi.yml#updateSubscriber
+  - name: generate_template_single_use_link
+    description: Generate a single-use install link for a template (Profile API).
+    source_operation: openapi/manychat-profile-api-openapi.yml#generateTemplateSingleUseLink
+agent_safety_notes:
+  - >-
+    remove_tag / remove_tag_by_name delete the tag from the page AND every subscriber carrying it.
+    ManyChat's own description says "This action can not be undone." These should be gated behind human
+    confirmation in any server built from this candidate list.
+  - >-
+    send_content and send_flow deliver real messages to real people on Meta-owned channels and are
+    governed by Meta's 24-hour messaging window and message-tag policy. There is no idempotency key, so a
+    retry sends a second message.
