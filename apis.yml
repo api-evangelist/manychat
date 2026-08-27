@@ -48,55 +48,14 @@ created: '2026-05-11'
 modified: '2026-08-13'
 specificationVersion: '0.23'
 apis:
-- aid: manychat:rest-api
-  name: ManyChat REST API
-  description: >-
-    REST API for managing subscribers, custom fields, tags, bot fields, flows, and sending messages in
-    ManyChat across Instagram, Messenger, WhatsApp and SMS. 35 operations across four tags. Authentication
-    uses an API key generated per connected page in Settings > API, passed as a Bearer token of the form
-    `Bearer <page-id>:<api-key>`. ManyChat serves the machine-readable contract as OpenAPI 3.0 from
-    api.manychat.com/swagger/compileJson, which the Swagger console at api.manychat.com/swagger loads.
-    Only HTTP 200 and 400 are declared anywhere in the contract; there is no idempotency key, no
-    pagination, and no rate-limit response headers.
-  humanURL: https://api.manychat.com/swagger
-  baseURL: https://api.manychat.com
-  tags:
-  - Chat Marketing
-  - Messenger Marketing
-  - Subscribers
-  - Flows
-  - Messaging
-  properties:
-  - type: Documentation
-    url: https://api.manychat.com/swagger
-  - type: APIReference
-    url: https://api.manychat.com/swagger
-  - type: Swagger
-    url: https://api.manychat.com/swagger
-  - type: OpenAPI
-    name: Provider-published Swagger, Page API (verbatim)
-    url: openapi/_original/manychat-page-api-swagger-original.json
-  - type: OpenAPI
-    name: Provider-published Swagger, Profile API (verbatim)
-    url: openapi/_original/manychat-profile-api-swagger-original.json
-  - type: Authentication
-    url: https://help.manychat.com/hc/en-us/articles/14959510331420
-  - type: Developer Program
-    url: https://help.manychat.com/hc/en-us/articles/14281299586972
-  - type: GettingStarted
-    url: https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
-  - type: RateLimits
-    url: rate-limits/manychat-rate-limits.yml
-  - type: ErrorCatalog
-    url: errors/manychat-problem-types.yml
 - aid: manychat:manychat-page-api
   name: ManyChat Page API
   description: >-
     Page-level configuration for a connected ManyChat page: connected page info, tags, typed custom user
-    field definitions, global bot fields, automations (flows) and folders, growth tools and One-Time
-    Notification topics. 16 operations. Reads are limited to 100 queries per second and writes to 10;
-    getFlows is the exception at 10 q/s. removeTag and removeTagByName delete the tag from the page and
-    every subscriber carrying it and cannot be undone.
+    field definitions, global bot fields, automations (flows) and folders, growth tools and One-Time Notification
+    topics. 16 operations. Reads are limited to 100 queries per second and writes to 10; getFlows is the
+    exception at 10 q/s. removeTag and removeTagByName delete the tag from the page and every subscriber
+    carrying it and cannot be undone.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
@@ -110,31 +69,15 @@ apis:
     url: openapi/manychat-page-api-openapi.yml
   - type: Overlay
     url: overlays/manychat-page-api-overlay.yaml
-- aid: manychat:manychat-profile-api
-  name: ManyChat Profile API
-  description: >-
-    White-label profile and template management. A single operation that generates a single-use install
-    link for a ManyChat template, served from its own Swagger document at
-    api.manychat.com/swagger/compileJson?type=Profile_API. ManyChat publishes no rate limit for it.
-  humanURL: https://api.manychat.com/swagger
-  baseURL: https://api.manychat.com
-  tags:
-  - Profile
-  - Template
-  properties:
-  - type: OpenAPI
-    url: openapi/manychat-profile-api-openapi.yml
-  - type: Overlay
-    url: overlays/manychat-profile-api-overlay.yaml
 - aid: manychat:manychat-sending-api
   name: ManyChat Sending API
   description: >-
     Send Dynamic Block content and trigger automations for a subscriber across Messenger, Instagram and
     WhatsApp. 3 operations. This is the surface governed by Meta policy rather than by ManyChat: outside
     the 24-hour messaging window a message tag is required (error 3011), One-Time Notification sends need
-    a token for the topic (3021), and channel restrictions surface as the 304X error family. sendFlow is
-    additionally capped at 100 queries per given subscriber per hour. There is no idempotency key, so a
-    retry delivers a duplicate message.
+    a token for the topic (3021), and channel restrictions surface as the 304X error family. sendFlow
+    is additionally capped at 100 queries per given subscriber per hour. There is no idempotency key,
+    so a retry delivers a duplicate message.
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
@@ -164,7 +107,35 @@ apis:
     url: openapi/manychat-subscriber-api-openapi.yml
   - type: Overlay
     url: overlays/manychat-subscriber-api-overlay.yaml
+- aid: manychat:manychat-template-api
+  name: ManyChat Template API
+  description: White-label profile / template management (Profile API)
+  humanURL: https://api.manychat.com/swagger
+  baseURL: https://api.manychat.com
+  tags:
+  - Template
+  properties:
+  - type: OpenAPI
+    url: openapi/manychat-template-api-openapi.yml
+  - type: Documentation
+    url: https://api.manychat.com/swagger
+  - type: APIReference
+    url: https://api.manychat.com/swagger
+  - type: Swagger
+    url: https://api.manychat.com/swagger
+  - type: Authentication
+    url: https://help.manychat.com/hc/en-us/articles/14959510331420
+  - type: Developer Program
+    url: https://help.manychat.com/hc/en-us/articles/14281299586972
+  - type: GettingStarted
+    url: https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics
+  - type: RateLimits
+    url: rate-limits/manychat-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/manychat-problem-types.yml
 common:
+  - type: Overlay
+    url: overlays/manychat-profile-api-overlay.yaml
   - type: AgenticAccess
     url: agentic-access/manychat-agentic-access.yml
   - type: VulnerabilityDisclosure
