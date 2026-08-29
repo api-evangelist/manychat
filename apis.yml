@@ -146,6 +146,9 @@ apis:
   - type: ErrorCatalog
     url: errors/manychat-problem-types.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/manychat-capability-edges.yml
+    name: ManyChat Business Capability Map
   - type: Overlay
     url: overlays/manychat-profile-api-overlay.yaml
   - type: AgenticAccess
