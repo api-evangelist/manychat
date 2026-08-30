@@ -1,0 +1,115 @@
+openapi: 3.2.0
+info:
+  title: ManyChat Profile Template API
+  description: 'The ManyChat Profile API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Profile_API). Authentication is an API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement; the provider''s generated hash ID is preserved on each operation as `x-provider-operation-id`.'
+  version: beta
+  contact:
+    name: ManyChat
+    url: https://api.manychat.com/swagger
+  x-source: https://api.manychat.com/swagger/compileJson?type=Profile_API
+  x-harvested: '2026-08-13'
+servers:
+- url: https://api.manychat.com
+  description: Production. ManyChat publishes servers[] as an empty relative URL; the host is the one serving the Swagger document.
+security:
+- Bearer: []
+tags:
+- name: Template
+  description: White-label profile / template management (Profile API)
+paths:
+  /user/template/generateSingleUseLink:
+    post:
+      tags:
+      - Template
+      summary: Generate single use link
+      operationId: generateTemplateSingleUseLink
+      requestBody:
+        description: 'Generate a unique link to share your template with someone with a single-use link that expires after the first installation.
+
+          The link will be generated only if the Template access is set to active and single-use link sharing option is enabled.
+
+          You can change the way you share your Template on the Template page (Profile>Templates>) https://app.manychat.com/profile/dashboard#templates'
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - template_id
+              properties:
+                template_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/TemplateInstallationLink'
+                type: object
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+      security:
+      - Bearer: []
+      x-provider-operation-id: 1fc7d7960d592bd7d6162fd0a373d16a
+components:
+  schemas:
+    ResponseError:
+      description: ''
+      required:
+      - status
+      - message
+      - details
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+        details:
+          required:
+          - messages
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResponseErrorMessage'
+          type: object
+          additionalProperties: false
+      type: object
+      additionalProperties: false
+    TemplateInstallationLink:
+      description: ''
+      required:
+      - hash_code
+      - installation_link
+      properties:
+        hash_code:
+          type: string
+        installation_link:
+          type: string
+      type: object
+      additionalProperties: false
+    ResponseErrorMessage:
+      description: ''
+      required:
+      - message
+      properties:
+        message:
+          type: string
+      type: object
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: 'API key generated per page in the ManyChat dashboard under Settings > API. Sent as `Authorization: Bearer <page-id>:<api-key>`.'
