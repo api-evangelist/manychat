@@ -29,17 +29,18 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: paid
-  onboarding: self-serve
-  trial: true
+  pricing: unknown
+  onboarding: open
+  trial: false
   try_now: false
   public: true
-  label: Self-serve signup, API gated to paid tiers
+  label: Open access
   confidence: medium
   source:
   - authentication
-  - plans
-  generated: '2026-08-13'
+  - rate-limits
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/manychat.png
 tags:
