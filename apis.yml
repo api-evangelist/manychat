@@ -76,6 +76,12 @@ apis:
   - Tags
   - Custom Fields
   - Bot Fields
+  - Flow
+  tags_raw:
+  - Page
+  - Tags
+  - Custom Fields
+  - Bot Fields
   - Flows
   properties:
   - type: OpenAPI
@@ -126,6 +132,8 @@ apis:
   humanURL: https://api.manychat.com/swagger
   baseURL: https://api.manychat.com
   tags:
+  - Templates
+  tags_raw:
   - Template
   properties:
   - type: OpenAPI
