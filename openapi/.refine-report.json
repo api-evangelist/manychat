@@ -1,20 +1,33 @@
 {
   "provider": "manychat",
   "sources": [
-    "manychat-page-api-openapi.yml",
-    "manychat-profile-api-openapi.yml",
-    "manychat-sending-api-openapi.yml",
-    "manychat-subscriber-api-openapi.yml"
+    "_original/manychat-page-api-swagger-original.json",
+    "_original/manychat-profile-api-openapi.yml"
   ],
   "outputs": [
     "manychat-page-api-openapi.yml",
-    "manychat-profile-api-openapi.yml",
     "manychat-sending-api-openapi.yml",
-    "manychat-subscriber-api-openapi.yml"
+    "manychat-subscriber-api-openapi.yml",
+    "manychat-template-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "manychat-page-api-swagger-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 10 component key(s) illegal in 3.x (e.g. Bot Field)",
+    "manychat-page-api-swagger-original.json: declared missing tag: Page",
+    "manychat-page-api-swagger-original.json: declared missing tag: Sending",
+    "manychat-page-api-swagger-original.json: declared missing tag: Subscriber",
+    "manychat-profile-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/manychat-profile-api-swagger-original.json: archived document superseded by a larger archived document",
+    "manychat-page-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "manychat-sending-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "manychat-subscriber-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "manychat-template-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

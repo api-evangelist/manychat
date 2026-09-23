@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: ManyChat Profile Template API
-  description: 'The ManyChat Profile API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Profile_API). Authentication is an API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement; the provider''s generated hash ID is preserved on each operation as `x-provider-operation-id`.'
+  description: The ManyChat Profile API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Profile_API).
   version: beta
   contact:
     name: ManyChat
@@ -63,6 +63,15 @@ paths:
       x-provider-operation-id: 1fc7d7960d592bd7d6162fd0a373d16a
 components:
   schemas:
+    ResponseErrorMessage:
+      description: ''
+      required:
+      - message
+      properties:
+        message:
+          type: string
+      type: object
+      additionalProperties: false
     ResponseError:
       description: ''
       required:
@@ -96,15 +105,6 @@ components:
         hash_code:
           type: string
         installation_link:
-          type: string
-      type: object
-      additionalProperties: false
-    ResponseErrorMessage:
-      description: ''
-      required:
-      - message
-      properties:
-        message:
           type: string
       type: object
       additionalProperties: false

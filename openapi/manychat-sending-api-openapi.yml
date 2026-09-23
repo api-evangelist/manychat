@@ -1,41 +1,28 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: ManyChat Sending API
-  description: 'The ManyChat Sending API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger
-    (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Page_API). Authentication is an
-    API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate
-    limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement;
-    the provider''s generated hash ID is preserved on each operation as `x-provider-operation-id`.'
+  description: Help article is available here
   version: beta
-  contact:
-    name: ManyChat
-    url: https://api.manychat.com/swagger
-  x-source: https://api.manychat.com/swagger/compileJson?type=Page_API
-  x-harvested: '2026-08-13'
 servers:
-- url: https://api.manychat.com
-  description: Production. ManyChat publishes servers[] as an empty relative URL; the host is the one serving the Swagger
-    document.
-security:
-- Bearer: []
+- url: ''
 tags:
 - name: Sending
-  description: Send content and flows to subscribers across Messenger, Instagram and WhatsApp
 paths:
   /fb/sending/sendContent:
     post:
       tags:
       - Sending
       summary: Send content to subscriber
-      description: 'Rate limit: 25 queries per second'
-      operationId: sendContent
+      description: '***Limit:*** 25 queries per second'
+      operationId: b6ae94031676b69a57eb2ad5ea1413f9
       requestBody:
-        description: 'Data format: https://manychat.github.io/dynamic_block_docs/
+        description: 'Data format: <https://manychat.github.io/dynamic_block_docs/><br>
 
-          Supported message tags: https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags#supported_tags
+          Supported message tags: <https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags#supported_tags><br>
 
-          More about message tags in ManyChat: https://support.manychat.com/support/solutions/articles/36000195552-message-tags
+          More about message tags in ManyChat: <https://support.manychat.com/support/solutions/articles/36000195552-message-tags><br>
 
+          <br>
 
           **Attention! After March 4, 2020 requests without message tag may cause error**'
         required: true
@@ -48,53 +35,52 @@ paths:
               properties:
                 subscriber_id:
                   type: integer
+                  isRequired: true
                 data:
                   type: object
                   additionalProperties: false
+                  isRequired: true
                 message_tag:
                   type: string
                   example: ACCOUNT_UPDATE
+                  isRequired: true
                 otn_topic_name:
                   type: string
                   example: Сhannel news
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: 'Possible error codes:
+          description: 'Possible error codes:<br>
 
-            3011 - Content can’t be sent to subscriber without message tag. Subscriber’s last interaction was over 24h ago.
+            3011 - Content can’t be sent to subscriber without message tag. Subscriber’s last interaction was over 24h ago.<br>
 
-            3021 - Content can’t be sent to subscriber. The subscriber has no One-Time Notification tokens for the selected
-            topic.
+            3021 - Content can’t be sent to subscriber. The subscriber has no One-Time Notification tokens for the selected topic.<br>
 
-            3031 - Content can’t be sent to subscriber without Notification Reason. Subscriber’s last interaction was more
-            than 24 hours ago.
+            3031 - Content can’t be sent to subscriber without Notification Reason. Subscriber’s last interaction was more than 24 hours ago.<br>
 
-            304X - Content can’t be sent to subscriber via specific channel.'
+            304X - Content can’t be sent to subscriber via specific channel.<br>'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseErrorWithCode'
+                $ref: '#/components/schemas/Response_Error_With_Code'
       security:
       - Bearer: []
-      x-provider-operation-id: b6ae94031676b69a57eb2ad5ea1413f9
   /fb/sending/sendContentByUserRef:
     post:
       tags:
       - Sending
       summary: Send content to user ref
-      description: 'Rate limit: 25 queries per second'
-      operationId: sendContentByUserRef
+      description: '***Limit:*** 25 queries per second'
+      operationId: 637120a69445b2892f725cbfeaf347ca
       requestBody:
-        description: 'Attention! The method doesn''t process actions
-
-          Data format https://manychat.github.io/dynamic_block_docs/'
+        description: Attention! The method doesn't process actions<br>Data format <https://manychat.github.io/dynamic_block_docs/>
         required: true
         content:
           application/json:
@@ -105,35 +91,36 @@ paths:
               properties:
                 user_ref:
                   type: integer
+                  isRequired: true
                 data:
                   type: object
                   additionalProperties: false
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 637120a69445b2892f725cbfeaf347ca
   /fb/sending/sendFlow:
     post:
       tags:
       - Sending
       summary: Send Automation to subscriber
-      description: 'Rate limit: 20 queries per second, 100 queries per a given subscriber per hour'
-      operationId: sendFlow
+      description: '***Limit:*** 20 queries per second, 100 queries per a given subscriber per hour'
+      operationId: 28f1abbb07b0d4773b846dbeb3880e3c
       requestBody:
-        description: 'Supported message tags: https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags#supported_tags'
+        description: 'Supported message tags: <https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags#supported_tags>'
         required: true
         content:
           application/json:
@@ -144,28 +131,29 @@ paths:
               properties:
                 subscriber_id:
                   type: integer
+                  isRequired: true
                 flow_ns:
                   type: string
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 28f1abbb07b0d4773b846dbeb3880e3c
 components:
   schemas:
-    ResponseError:
+    Response_Error:
       description: ''
       required:
       - status
@@ -175,8 +163,10 @@ components:
         status:
           type: string
           example: error
+          isRequired: true
         message:
           type: string
+          isRequired: true
         details:
           required:
           - messages
@@ -184,21 +174,25 @@ components:
             messages:
               type: array
               items:
-                $ref: '#/components/schemas/ResponseErrorMessage'
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
           type: object
           additionalProperties: false
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseErrorMessage:
+    Response_Success:
       description: ''
       required:
-      - message
+      - status
       properties:
-        message:
+        status:
           type: string
+          example: success
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseErrorWithCode:
+    Response_Error_With_Code:
       description: ''
       required:
       - status
@@ -208,25 +202,28 @@ components:
         status:
           type: string
           example: error
+          isRequired: true
         message:
           type: string
+          isRequired: true
         code:
           type: integer
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseSuccess:
+    Response_Error_Message:
       description: ''
       required:
-      - status
+      - message
       properties:
-        status:
+        message:
           type: string
-          example: success
+          isRequired: true
       type: object
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
+      name: Authorization
+      in: header
       scheme: bearer
-      description: 'API key generated per page in the ManyChat dashboard under Settings > API. Sent as `Authorization: Bearer
-        <page-id>:<api-key>`.'

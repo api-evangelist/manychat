@@ -1,37 +1,23 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: ManyChat Page API
-  description: 'The ManyChat Page API, split by tag from the Swagger document ManyChat publishes at https://api.manychat.com/swagger
-    (the underlying JSON is served from https://api.manychat.com/swagger/compileJson?type=Page_API). Authentication is an
-    API key generated per page in Settings > API, sent as `Authorization: Bearer <page-id>:<api-key>`. Per-operation rate
-    limits are published by ManyChat in each operation description. Operation IDs here are the readable API Evangelist refinement;
-    the provider''s generated hash ID is preserved on each operation as `x-provider-operation-id`.'
+  description: Help article is available here
   version: beta
-  contact:
-    name: ManyChat
-    url: https://api.manychat.com/swagger
-  x-source: https://api.manychat.com/swagger/compileJson?type=Page_API
-  x-harvested: '2026-08-13'
 servers:
-- url: https://api.manychat.com
-  description: Production. ManyChat publishes servers[] as an empty relative URL; the host is the one serving the Swagger
-    document.
-security:
-- Bearer: []
+- url: ''
 tags:
 - name: Page
-  description: 'Page-level configuration: connected page info, tags, custom fields, bot fields, flows and growth tools'
 paths:
   /fb/page/getInfo:
     get:
       tags:
       - Page
-      summary: Get info
-      description: 'Rate limit: 100 queries per second'
-      operationId: getPageInfo
+      summary: B26c074b3783eb6e888c62324b17268c
+      description: '***Limit:*** 100 queries per second'
+      operationId: b26c074b3783eb6e888c62324b17268c
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -39,19 +25,20 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     $ref: '#/components/schemas/Page'
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: b26c074b3783eb6e888c62324b17268c
+      x-summary-source: derived
   /fb/page/createTag:
     post:
       tags:
       - Page
-      summary: Create tag
-      description: 'Rate limit: 10 queries per second'
-      operationId: createTag
+      summary: E964547412ede512f9534970c8e3971a
+      description: '***Limit:*** 10 queries per second'
+      operationId: e964547412ede512f9534970c8e3971a
       requestBody:
         required: true
         content:
@@ -63,10 +50,11 @@ paths:
                 name:
                   type: string
                   example: My tag
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -74,6 +62,7 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     required:
                     - tag
@@ -82,26 +71,27 @@ paths:
                         $ref: '#/components/schemas/Tag'
                     type: object
                     additionalProperties: false
+                    isRequired: true
                 type: object
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: e964547412ede512f9534970c8e3971a
+      x-summary-source: derived
   /fb/page/getTags:
     get:
       tags:
       - Page
-      summary: Get tags
-      description: 'Rate limit: 100 queries per second'
-      operationId: getTags
+      summary: 55f8b0c6040a20ba811a08eb4d92b9c2
+      description: '***Limit:*** 100 queries per second'
+      operationId: 55f8b0c6040a20ba811a08eb4d92b9c2
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -109,25 +99,27 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
                       $ref: '#/components/schemas/Tag'
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: 55f8b0c6040a20ba811a08eb4d92b9c2
+      x-summary-source: derived
   /fb/page/removeTag:
     post:
       tags:
       - Page
-      summary: Remove tag
-      description: 'Rate limit: 10 queries per second.
+      summary: 55b1d844eb0006f3c49e2a3ac524dd4e
+      description: '***Limit:*** 10 queries per second.
 
         Removes specified tag from the page and the page''s subscribers.
 
         This action can not be undone.'
-      operationId: removeTag
+      operationId: 55b1d844eb0006f3c49e2a3ac524dd4e
       requestBody:
         required: true
         content:
@@ -139,10 +131,11 @@ paths:
                 tag_id:
                   type: integer
                   example: 123
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -150,27 +143,28 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                 type: object
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 55b1d844eb0006f3c49e2a3ac524dd4e
+      x-summary-source: derived
   /fb/page/removeTagByName:
     post:
       tags:
       - Page
-      summary: Remove tag by name
-      description: 'Rate limit: 10 queries per second.
+      summary: 02235c5d38c1f33af18a296d331e5a35
+      description: '***Limit:*** 10 queries per second.
 
         Removes specified tag from the page and the page''s subscribers.
 
         This action can not be undone.'
-      operationId: removeTagByName
+      operationId: 02235c5d38c1f33af18a296d331e5a35
       requestBody:
         required: true
         content:
@@ -182,10 +176,11 @@ paths:
                 tag_name:
                   type: string
                   example: MyTagName
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -193,28 +188,29 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                 type: object
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 02235c5d38c1f33af18a296d331e5a35
+      x-summary-source: derived
   /fb/page/getWidgets:
     get:
       tags:
       - Page
-      summary: Get widgets
-      description: 'Rate limit: 100 queries per second.
+      summary: 33ec0bc6a34501ed9b4c2b6976b26bd2
+      description: '***Limit:*** 100 queries per second.
 
         Use getGrowthTools instead.'
-      operationId: getWidgets
+      operationId: 33ec0bc6a34501ed9b4c2b6976b26bd2
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -222,22 +218,24 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/GrowthTool'
+                      $ref: '#/components/schemas/Growth_Tools'
+                    isRequired: true
                 type: object
       deprecated: true
       security:
       - Bearer: []
-      x-provider-operation-id: 33ec0bc6a34501ed9b4c2b6976b26bd2
+      x-summary-source: derived
   /fb/page/createCustomField:
     post:
       tags:
       - Page
-      summary: Create custom field
-      description: 'Rate limit: 10 queries per second'
-      operationId: createCustomField
+      summary: 1d7171252e09f4e25b5123f9484ea3c1
+      description: '***Limit:*** 10 queries per second'
+      operationId: 1d7171252e09f4e25b5123f9484ea3c1
       requestBody:
         required: true
         content:
@@ -250,17 +248,20 @@ paths:
                 caption:
                   type: string
                   example: My custom field name
+                  isRequired: true
                 type:
                   description: 'Value from list: text, number, date, datetime, boolean'
                   type: string
                   example: text
+                  isRequired: true
                 description:
                   type: string
                   example: This field store my custom field name
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -268,34 +269,36 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     required:
                     - field
                     properties:
                       field:
-                        $ref: '#/components/schemas/CustomField'
+                        $ref: '#/components/schemas/Custom_Field'
                     type: object
                     additionalProperties: false
+                    isRequired: true
                 type: object
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 1d7171252e09f4e25b5123f9484ea3c1
+      x-summary-source: derived
   /fb/page/getGrowthTools:
     get:
       tags:
       - Page
-      summary: Get growth tools
-      description: 'Rate limit: 100 queries per second'
-      operationId: getGrowthTools
+      summary: 2ab4a2a91a0b2cb1d5084e91b281e48c
+      description: '***Limit:*** 100 queries per second'
+      operationId: 2ab4a2a91a0b2cb1d5084e91b281e48c
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -303,24 +306,26 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/GrowthTool'
+                      $ref: '#/components/schemas/Growth_Tools'
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: 2ab4a2a91a0b2cb1d5084e91b281e48c
+      x-summary-source: derived
   /fb/page/getFlows:
     get:
       tags:
       - Page
-      summary: Get flows
-      description: 'Rate limit: 10 queries per second'
-      operationId: getFlows
+      summary: 6aee779784709b84bb0a734ebb42b650
+      description: '***Limit:*** 10 queries per second'
+      operationId: 6aee779784709b84bb0a734ebb42b650
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -328,6 +333,7 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     required:
                     - flows
@@ -337,26 +343,29 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Flow'
+                        isRequired: true
                       folders:
                         type: array
                         items:
                           $ref: '#/components/schemas/Folder'
+                        isRequired: true
                     type: object
                     additionalProperties: false
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: 6aee779784709b84bb0a734ebb42b650
+      x-summary-source: derived
   /fb/page/getCustomFields:
     get:
       tags:
       - Page
-      summary: Get custom fields
-      description: 'Rate limit: 100 queries per second'
-      operationId: getCustomFields
+      summary: 2bc43834222da265c4c41fbd129d1392
+      description: '***Limit:*** 100 queries per second'
+      operationId: 2bc43834222da265c4c41fbd129d1392
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -364,24 +373,26 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/CustomField'
+                      $ref: '#/components/schemas/Custom_Field'
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: 2bc43834222da265c4c41fbd129d1392
+      x-summary-source: derived
   /fb/page/getOtnTopics:
     get:
       tags:
       - Page
-      summary: Get otn topics
-      description: 'Rate limit: 100 queries per second'
-      operationId: getOtnTopics
+      summary: B62d72c6502f4f7f687558c2f7a4c2c3
+      description: '***Limit:*** 100 queries per second'
+      operationId: b62d72c6502f4f7f687558c2f7a4c2c3
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -389,24 +400,26 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/OtnTopic'
+                      $ref: '#/components/schemas/Otn_Topic'
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: b62d72c6502f4f7f687558c2f7a4c2c3
+      x-summary-source: derived
   /fb/page/getBotFields:
     get:
       tags:
       - Page
-      summary: Get bot fields
-      description: 'Rate limit: 100 queries per second'
-      operationId: getBotFields
+      summary: Dbb46d786cc1323d56b27ff7de7bcc3f
+      description: '***Limit:*** 100 queries per second'
+      operationId: dbb46d786cc1323d56b27ff7de7bcc3f
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -414,21 +427,23 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/BotField'
+                      $ref: '#/components/schemas/Bot_Field'
+                    isRequired: true
                 type: object
       security:
       - Bearer: []
-      x-provider-operation-id: dbb46d786cc1323d56b27ff7de7bcc3f
+      x-summary-source: derived
   /fb/page/createBotField:
     post:
       tags:
       - Page
-      summary: Create bot field
-      description: 'Rate limit: 10 queries per second'
-      operationId: createBotField
+      summary: 388714b65c83021aa8b1bb78481fb983
+      description: '***Limit:*** 10 queries per second'
+      operationId: 388714b65c83021aa8b1bb78481fb983
       requestBody:
         required: true
         content:
@@ -441,20 +456,24 @@ paths:
                 name:
                   type: string
                   example: My bot name
+                  isRequired: true
                 type:
                   description: 'Value from list: text, number, date, datetime, boolean'
                   type: string
                   example: text
+                  isRequired: true
                 description:
                   type: string
                   example: This field store my bot name
+                  isRequired: true
                 value:
                   description: string, integer or boolean (see method description for setBotField)
                   example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T00:00:00+00:00'''
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
@@ -462,49 +481,51 @@ paths:
                   status:
                     type: string
                     example: success
+                    isRequired: true
                   data:
                     required:
                     - field
                     properties:
                       field:
-                        $ref: '#/components/schemas/BotField'
+                        $ref: '#/components/schemas/Bot_Field'
                     type: object
                     additionalProperties: false
+                    isRequired: true
                 type: object
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 388714b65c83021aa8b1bb78481fb983
+      x-summary-source: derived
   /fb/page/setBotField:
     post:
       tags:
       - Page
-      summary: Set bot field
-      description: 'Rate limit: 10 queries per second'
-      operationId: setBotField
+      summary: 4032722e43e4b967e07d1b1279942254
+      description: '***Limit:*** 10 queries per second'
+      operationId: 4032722e43e4b967e07d1b1279942254
       requestBody:
-        description: 'Depending on the type of Bot Field you will need to use one of the following type of data for "field_value".
+        description: 'Depending on the type of Bot Field you will need to use one of the following type of data for "field_value".<br>
 
-          ***For example:***
+          ***For example:***<br>
 
-          Text: "text" (string)
+          Text: "text" (string)<br>
 
-          Number: 123 or 1.23 (integer or float)
+          Number: 123 or 1.23 (integer or float)<br>
 
-          Boolean: true or false (boolean)
+          Boolean: true or false (boolean)<br>
 
-          Date: "2018-07-18" (string)
+          Date: "2018-07-18" (string)<br>
 
-          Date and time: "2018-07-02T00:00:00+00:00" (string)
+          Date and time: "2018-07-02T00:00:00+00:00" (string)<br>
 
+          <br>
 
-          Data and time format for this API method is YYYY-MM-DDTHH:MM:SSP.  Where P is user’s timezone. For example May 1st
-          2018 06:30:24 UTC+3:00 should be formatted as 2018-05-01T06:30:24+03:00'
+          Data and time format for this API method is YYYY-MM-DDTHH:MM:SSP.  Where P is user’s timezone. For example May 1st 2018 06:30:24 UTC+3:00 should be formatted as 2018-05-01T06:30:24+03:00'
         required: true
         content:
           application/json:
@@ -515,51 +536,53 @@ paths:
               properties:
                 field_id:
                   type: integer
+                  isRequired: true
                 field_value:
                   description: string, integer or boolean (see method description)
                   example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T00:00:00+00:00'''
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 4032722e43e4b967e07d1b1279942254
+      x-summary-source: derived
   /fb/page/setBotFieldByName:
     post:
       tags:
       - Page
-      summary: Set bot field by name
-      description: 'Rate limit: 10 queries per second'
-      operationId: setBotFieldByName
+      summary: 63284ce7970087a42458d5a2c2594c1b
+      description: '***Limit:*** 10 queries per second'
+      operationId: 63284ce7970087a42458d5a2c2594c1b
       requestBody:
-        description: 'Depending on the type of Bot Field you will need to use one of the following type of data for "field_value".
+        description: 'Depending on the type of Bot Field you will need to use one of the following type of data for "field_value".<br>
 
-          ***For example:***
+          ***For example:***<br>
 
-          Text: "text" (string)
+          Text: "text" (string)<br>
 
-          Number: 123 or 1.23 (integer or float)
+          Number: 123 or 1.23 (integer or float)<br>
 
-          Boolean: true or false (boolean)
+          Boolean: true or false (boolean)<br>
 
-          Date: "2018-07-18" (string)
+          Date: "2018-07-18" (string)<br>
 
-          Date and time: "2018-07-02T00:00:00+00:00" (string)
+          Date and time: "2018-07-02T00:00:00+00:00" (string)<br>
 
+          <br>
 
-          Data and time format for this API method is YYYY-MM-DDTHH:MM:SSP.  Where P is user’s timezone. For example May 1st
-          2018 06:30:24 UTC+3:00 should be formatted as 2018-05-01T06:30:24+03:00'
+          Data and time format for this API method is YYYY-MM-DDTHH:MM:SSP.  Where P is user’s timezone. For example May 1st 2018 06:30:24 UTC+3:00 should be formatted as 2018-05-01T06:30:24+03:00'
         required: true
         content:
           application/json:
@@ -570,42 +593,45 @@ paths:
               properties:
                 field_name:
                   type: string
+                  isRequired: true
                 field_value:
                   description: string, integer or boolean (see method description)
                   example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T00:00:00+00:00'''
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 63284ce7970087a42458d5a2c2594c1b
+      x-summary-source: derived
   /fb/page/setBotFields:
     post:
       tags:
       - Page
-      summary: Set bot fields
-      description: 'Rate limit: 10 queries per second'
-      operationId: setBotFields
+      summary: 327327a53f87fecaeb9f7cd69c0433af
+      description: '***Limit:*** 10 queries per second'
+      operationId: 327327a53f87fecaeb9f7cd69c0433af
       requestBody:
-        description: 'Set multiple bot fields.
+        description: 'Set multiple bot fields.<br>
 
-          The number of bot fields is limited to 20 for one request.
+          The number of bot fields is limited to 20 for one request.<br>
 
-          Use **field_id** OR **field_name** to specify the field.
+          Use **field_id** OR **field_name** to specify the field.<br>
 
-          ***For example:***
+          ***For example:***<br>
 
+          <br>
 
           ```"fields": [{"field_id": 77777777, "field_value": 555}, {"field_name": "count", "field_value": 12}]```'
         required: true
@@ -625,82 +651,66 @@ paths:
                     properties:
                       field_id:
                         type: integer
+                        isRequired: true
                       field_name:
                         type: string
+                        isRequired: true
                       field_value:
                         description: string, integer or boolean (see method description)
                         example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T00:00:00+00:00'''
+                        isRequired: true
                     type: object
                     additionalProperties: false
+                  isRequired: true
               type: object
       responses:
         '200':
-          description: Success
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseSuccess'
+                $ref: '#/components/schemas/Response_Success'
         '400':
-          description: Error
+          description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseError'
+                $ref: '#/components/schemas/Response_Error'
       security:
       - Bearer: []
-      x-provider-operation-id: 327327a53f87fecaeb9f7cd69c0433af
+      x-summary-source: derived
 components:
   schemas:
-    BotField:
+    Otn_Topic:
       description: ''
       required:
       - id
       - name
-      - type
       - description
-      - value
       properties:
         id:
           type: integer
+          isRequired: true
         name:
           type: string
-        type:
-          type: string
-          enum:
-          - text
-          - number
-          - date
-          - datetime
-          - boolean
+          isRequired: true
         description:
           type: string
-        value:
-          description: string, integer or boolean
-          example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T07:45:00+03:00'''
+          isRequired: true
       type: object
       additionalProperties: false
-    CustomField:
+    Tag:
       description: ''
       required:
       - id
       - name
-      - type
-      - description
       properties:
         id:
           type: integer
+          isRequired: true
         name:
           type: string
-        type:
-          type: string
-          enum:
-          - text
-          - number
-          - date
-          - datetime
-          - boolean
-        description:
-          type: string
+          isRequired: true
       type: object
       additionalProperties: false
     Flow:
@@ -713,55 +723,41 @@ components:
         ns:
           description: Automation namespace - unique Automation ID
           type: string
+          isRequired: true
         name:
           type: string
+          isRequired: true
         folder_id:
           type: integer
+          isRequired: true
       type: object
       additionalProperties: false
-    Folder:
-      description: ''
-      required:
-      - id
-      - name
-      - parent_id
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        parent_id:
-          type: integer
-      type: object
-      additionalProperties: false
-    GrowthTool:
+    Custom_Field:
       description: ''
       required:
       - id
       - name
       - type
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        type:
-          type: string
-      type: object
-      additionalProperties: false
-    OtnTopic:
-      description: ''
-      required:
-      - id
-      - name
       - description
       properties:
         id:
           type: integer
+          isRequired: true
         name:
           type: string
+          isRequired: true
+        type:
+          type: string
+          enum:
+          - text
+          - number
+          - date
+          - datetime
+          - boolean
+          isRequired: true
         description:
           type: string
+          isRequired: true
       type: object
       additionalProperties: false
     Page:
@@ -780,25 +776,67 @@ components:
         id:
           description: This is Facebook Page ID
           type: integer
+          isRequired: true
         name:
           type: string
+          isRequired: true
         category:
           type: string
+          isRequired: true
         avatar_link:
           type: string
+          isRequired: true
         username:
           type: string
+          isRequired: true
         about:
           type: string
+          isRequired: true
         description:
           type: string
+          isRequired: true
         is_pro:
           type: boolean
+          isRequired: true
         timezone:
           type: string
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseError:
+    Bot_Field:
+      description: ''
+      required:
+      - id
+      - name
+      - type
+      - description
+      - value
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        type:
+          type: string
+          enum:
+          - text
+          - number
+          - date
+          - datetime
+          - boolean
+          isRequired: true
+        description:
+          type: string
+          isRequired: true
+        value:
+          description: string, integer or boolean
+          example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T07:45:00+03:00'''
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error:
       description: ''
       required:
       - status
@@ -808,8 +846,10 @@ components:
         status:
           type: string
           example: error
+          isRequired: true
         message:
           type: string
+          isRequired: true
         details:
           required:
           - messages
@@ -817,21 +857,32 @@ components:
             messages:
               type: array
               items:
-                $ref: '#/components/schemas/ResponseErrorMessage'
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
           type: object
           additionalProperties: false
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseErrorMessage:
+    Folder:
       description: ''
       required:
-      - message
+      - id
+      - name
+      - parent_id
       properties:
-        message:
+        id:
+          type: integer
+          isRequired: true
+        name:
           type: string
+          isRequired: true
+        parent_id:
+          type: integer
+          isRequired: true
       type: object
       additionalProperties: false
-    ResponseSuccess:
+    Response_Success:
       description: ''
       required:
       - status
@@ -839,23 +890,40 @@ components:
         status:
           type: string
           example: success
+          isRequired: true
       type: object
       additionalProperties: false
-    Tag:
+    Growth_Tools:
       description: ''
       required:
       - id
       - name
+      - type
       properties:
         id:
           type: integer
+          isRequired: true
         name:
           type: string
+          isRequired: true
+        type:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error_Message:
+      description: ''
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          isRequired: true
       type: object
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
+      name: Authorization
+      in: header
       scheme: bearer
-      description: 'API key generated per page in the ManyChat dashboard under Settings > API. Sent as `Authorization: Bearer
-        <page-id>:<api-key>`.'
