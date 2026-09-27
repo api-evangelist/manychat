@@ -153,34 +153,6 @@ paths:
       - Bearer: []
 components:
   schemas:
-    Response_Error:
-      description: ''
-      required:
-      - status
-      - message
-      - details
-      properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
-        message:
-          type: string
-          isRequired: true
-        details:
-          required:
-          - messages
-          properties:
-            messages:
-              type: array
-              items:
-                $ref: '#/components/schemas/Response_Error_Message'
-              isRequired: true
-          type: object
-          additionalProperties: false
-          isRequired: true
-      type: object
-      additionalProperties: false
     Response_Success:
       description: ''
       required:
@@ -218,6 +190,34 @@ components:
       properties:
         message:
           type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error:
+      description: ''
+      required:
+      - status
+      - message
+      - details
+      properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
+        message:
+          type: string
+          isRequired: true
+        details:
+          required:
+          - messages
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
+          type: object
+          additionalProperties: false
           isRequired: true
       type: object
       additionalProperties: false

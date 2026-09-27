@@ -72,6 +72,18 @@ components:
           type: string
       type: object
       additionalProperties: false
+    TemplateInstallationLink:
+      description: ''
+      required:
+      - hash_code
+      - installation_link
+      properties:
+        hash_code:
+          type: string
+        installation_link:
+          type: string
+      type: object
+      additionalProperties: false
     ResponseError:
       description: ''
       required:
@@ -94,18 +106,6 @@ components:
                 $ref: '#/components/schemas/ResponseErrorMessage'
           type: object
           additionalProperties: false
-      type: object
-      additionalProperties: false
-    TemplateInstallationLink:
-      description: ''
-      required:
-      - hash_code
-      - installation_link
-      properties:
-        hash_code:
-          type: string
-        installation_link:
-          type: string
       type: object
       additionalProperties: false
   securitySchemes:
