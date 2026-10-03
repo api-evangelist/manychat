@@ -681,92 +681,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Response_Error_Message:
-      description: ''
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Otn_Topic:
-      description: ''
-      required:
-      - id
-      - name
-      - description
-      properties:
-        id:
-          type: integer
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        description:
-          type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Error:
-      description: ''
-      required:
-      - status
-      - message
-      - details
-      properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
-        message:
-          type: string
-          isRequired: true
-        details:
-          required:
-          - messages
-          properties:
-            messages:
-              type: array
-              items:
-                $ref: '#/components/schemas/Response_Error_Message'
-              isRequired: true
-          type: object
-          additionalProperties: false
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Flow:
-      description: ''
-      required:
-      - ns
-      - name
-      - folder_id
-      properties:
-        ns:
-          description: Automation namespace - unique Automation ID
-          type: string
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        folder_id:
-          type: integer
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Success:
-      description: ''
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          example: success
-          isRequired: true
-      type: object
-      additionalProperties: false
     Growth_Tools:
       description: ''
       required:
@@ -782,6 +696,39 @@ components:
           isRequired: true
         type:
           type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Bot_Field:
+      description: ''
+      required:
+      - id
+      - name
+      - type
+      - description
+      - value
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        type:
+          type: string
+          enum:
+          - text
+          - number
+          - date
+          - datetime
+          - boolean
+          isRequired: true
+        description:
+          type: string
+          isRequired: true
+        value:
+          description: string, integer or boolean
+          example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T07:45:00+03:00'''
           isRequired: true
       type: object
       additionalProperties: false
@@ -856,50 +803,13 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
-    Tag:
+    Response_Error_Message:
       description: ''
       required:
-      - id
-      - name
+      - message
       properties:
-        id:
-          type: integer
-          isRequired: true
-        name:
+        message:
           type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Bot_Field:
-      description: ''
-      required:
-      - id
-      - name
-      - type
-      - description
-      - value
-      properties:
-        id:
-          type: integer
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        type:
-          type: string
-          enum:
-          - text
-          - number
-          - date
-          - datetime
-          - boolean
-          isRequired: true
-        description:
-          type: string
-          isRequired: true
-        value:
-          description: string, integer or boolean
-          example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T07:45:00+03:00'''
           isRequired: true
       type: object
       additionalProperties: false
@@ -918,6 +828,96 @@ components:
           isRequired: true
         parent_id:
           type: integer
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Tag:
+      description: ''
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Flow:
+      description: ''
+      required:
+      - ns
+      - name
+      - folder_id
+      properties:
+        ns:
+          description: Automation namespace - unique Automation ID
+          type: string
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        folder_id:
+          type: integer
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Success:
+      description: ''
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          example: success
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Otn_Topic:
+      description: ''
+      required:
+      - id
+      - name
+      - description
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        description:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error:
+      description: ''
+      required:
+      - status
+      - message
+      - details
+      properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
+        message:
+          type: string
+          isRequired: true
+        details:
+          required:
+          - messages
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
+          type: object
+          additionalProperties: false
           isRequired: true
       type: object
       additionalProperties: false
