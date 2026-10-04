@@ -740,6 +740,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Response_Error:
+      description: ''
+      required:
+      - status
+      - message
+      - details
+      properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
+        message:
+          type: string
+          isRequired: true
+        details:
+          required:
+          - messages
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
+          type: object
+          additionalProperties: false
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Tag:
+      description: ''
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
     Subscriber_Custom_Field:
       description: ''
       required:
@@ -770,6 +812,25 @@ components:
         value:
           description: string, integer or boolean
           example: '''string'', 123, true, ''2018-07-18'', ''2018-07-02T07:45:00+03:00'''
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error_With_Code:
+      description: ''
+      required:
+      - status
+      - message
+      - code
+      properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
+        message:
+          type: string
+          isRequired: true
+        code:
+          type: integer
           isRequired: true
       type: object
       additionalProperties: false
@@ -922,6 +983,27 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
+    Response_Success:
+      description: ''
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          example: success
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error_Message:
+      description: ''
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
     Subscriber_Ref_Field:
       description: ''
       required:
@@ -936,88 +1018,6 @@ components:
           description: datetime in W3C format
           type: string
           example: '2018-12-03T11:17:54+00:00'
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Error_Message:
-      description: ''
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Tag:
-      description: ''
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: integer
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Success:
-      description: ''
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          example: success
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Error_With_Code:
-      description: ''
-      required:
-      - status
-      - message
-      - code
-      properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
-        message:
-          type: string
-          isRequired: true
-        code:
-          type: integer
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Error:
-      description: ''
-      required:
-      - status
-      - message
-      - details
-      properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
-        message:
-          type: string
-          isRequired: true
-        details:
-          required:
-          - messages
-          properties:
-            messages:
-              type: array
-              items:
-                $ref: '#/components/schemas/Response_Error_Message'
-              isRequired: true
-          type: object
-          additionalProperties: false
           isRequired: true
       type: object
       additionalProperties: false
