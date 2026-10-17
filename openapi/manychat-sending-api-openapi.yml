@@ -163,6 +163,36 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
+    Response_Success:
+      description: ''
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          example: success
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Response_Error_With_Code:
+      description: ''
+      required:
+      - status
+      - message
+      - code
+      properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
+        message:
+          type: string
+          isRequired: true
+        code:
+          type: integer
+          isRequired: true
+      type: object
+      additionalProperties: false
     Response_Error:
       description: ''
       required:
@@ -188,36 +218,6 @@ components:
               isRequired: true
           type: object
           additionalProperties: false
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Error_With_Code:
-      description: ''
-      required:
-      - status
-      - message
-      - code
-      properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
-        message:
-          type: string
-          isRequired: true
-        code:
-          type: integer
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Success:
-      description: ''
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          example: success
           isRequired: true
       type: object
       additionalProperties: false

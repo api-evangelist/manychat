@@ -699,31 +699,24 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
-    Response_Error:
+    Response_Error_Message:
       description: ''
       required:
-      - status
       - message
-      - details
       properties:
-        status:
-          type: string
-          example: error
-          isRequired: true
         message:
           type: string
           isRequired: true
-        details:
-          required:
-          - messages
-          properties:
-            messages:
-              type: array
-              items:
-                $ref: '#/components/schemas/Response_Error_Message'
-              isRequired: true
-          type: object
-          additionalProperties: false
+      type: object
+      additionalProperties: false
+    Response_Success:
+      description: ''
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          example: success
           isRequired: true
       type: object
       additionalProperties: false
@@ -738,97 +731,6 @@ components:
           isRequired: true
         name:
           type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Folder:
-      description: ''
-      required:
-      - id
-      - name
-      - parent_id
-      properties:
-        id:
-          type: integer
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        parent_id:
-          type: integer
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Page:
-      description: ''
-      required:
-      - id
-      - name
-      - category
-      - avatar_link
-      - username
-      - about
-      - description
-      - is_pro
-      - timezone
-      properties:
-        id:
-          description: This is Facebook Page ID
-          type: integer
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        category:
-          type: string
-          isRequired: true
-        avatar_link:
-          type: string
-          isRequired: true
-        username:
-          type: string
-          isRequired: true
-        about:
-          type: string
-          isRequired: true
-        description:
-          type: string
-          isRequired: true
-        is_pro:
-          type: boolean
-          isRequired: true
-        timezone:
-          type: string
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Flow:
-      description: ''
-      required:
-      - ns
-      - name
-      - folder_id
-      properties:
-        ns:
-          description: Automation namespace - unique Automation ID
-          type: string
-          isRequired: true
-        name:
-          type: string
-          isRequired: true
-        folder_id:
-          type: integer
-          isRequired: true
-      type: object
-      additionalProperties: false
-    Response_Success:
-      description: ''
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          example: success
           isRequired: true
       type: object
       additionalProperties: false
@@ -883,6 +785,86 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
+    Flow:
+      description: ''
+      required:
+      - ns
+      - name
+      - folder_id
+      properties:
+        ns:
+          description: Automation namespace - unique Automation ID
+          type: string
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        folder_id:
+          type: integer
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Page:
+      description: ''
+      required:
+      - id
+      - name
+      - category
+      - avatar_link
+      - username
+      - about
+      - description
+      - is_pro
+      - timezone
+      properties:
+        id:
+          description: This is Facebook Page ID
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        category:
+          type: string
+          isRequired: true
+        avatar_link:
+          type: string
+          isRequired: true
+        username:
+          type: string
+          isRequired: true
+        about:
+          type: string
+          isRequired: true
+        description:
+          type: string
+          isRequired: true
+        is_pro:
+          type: boolean
+          isRequired: true
+        timezone:
+          type: string
+          isRequired: true
+      type: object
+      additionalProperties: false
+    Folder:
+      description: ''
+      required:
+      - id
+      - name
+      - parent_id
+      properties:
+        id:
+          type: integer
+          isRequired: true
+        name:
+          type: string
+          isRequired: true
+        parent_id:
+          type: integer
+          isRequired: true
+      type: object
+      additionalProperties: false
     Custom_Field:
       description: ''
       required:
@@ -911,13 +893,31 @@ components:
           isRequired: true
       type: object
       additionalProperties: false
-    Response_Error_Message:
+    Response_Error:
       description: ''
       required:
+      - status
       - message
+      - details
       properties:
+        status:
+          type: string
+          example: error
+          isRequired: true
         message:
           type: string
+          isRequired: true
+        details:
+          required:
+          - messages
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Response_Error_Message'
+              isRequired: true
+          type: object
+          additionalProperties: false
           isRequired: true
       type: object
       additionalProperties: false
