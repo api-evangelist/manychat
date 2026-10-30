@@ -1,4 +1,4 @@
-# ManyChat (manychat)
+# ManyChat
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,66 +64,149 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-ManyChat is a messenger marketing platform that enables businesses to build automated conversations and chat marketing flows across Instagram Direct Messages, Facebook Messenger, WhatsApp, TikTok, and SMS. It provides a visual flow builder, audience segmentation, broadcasts, and integrations with ecommerce and CRM tools to drive engagement, lead capture, and sales. The ManyChat API allows programmatic access to subscribers, custom fields, flows, and messaging using API key (Bearer token) authentication.
+ManyChat is a chat-marketing platform that lets businesses build automated conversations and marketing flows across Instagram Direct Messages, Facebook Messenger, WhatsApp, Telegram, TikTok and SMS. It provides a visual flow builder, audience segmentation, broadcasts, growth tools and integrations with ecommerce and CRM systems to drive engagement, lead capture and sales. The public ManyChat REST API is a page-scoped surface of 35 operations covering subscribers, tags, typed custom fields, page-level bot fields, automations and sending, published as OpenAPI 3.0 and served through an interactive Swagger console at api.manychat.com/swagger. Authentication is a per-page API key sent as an Authorization Bearer token in the form page-id:api-key; there is no OAuth, no scopes and no account-wide credential. ManyChat's only asynchronous surface runs outbound: the External Request flow step calls a partner endpoint and expects a Dynamic Block v2 JSON response back, so the integrator is the webhook receiver rather than ManyChat pushing events.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/manychat/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/manychat/refs/heads/main/apis.yml)
+**Areas:** Chat Marketing · Messenger Marketing · Conversational Commerce · Marketing Automation · Instagram · WhatsApp · Facebook Messenger · SMS · Chatbots · Customer Engagement · Automation
 
-## Scope
+## ManyChat on APIs.io
 
-- **Type:** Index
+Everything profiled for ManyChat is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/manychat/](https://apis.io/providers/manychat/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Chat Marketing
-- Messenger Marketing
-- Conversational Commerce
-- Marketing Automation
-- Instagram
-- WhatsApp
-- Facebook Messenger
+- [ManyChat Page API](https://apis.io/apis/manychat/manychat-page-api/) — Page-level configuration for a connected ManyChat page: connected page info, tags, typed custom user field definitions, global bot fields, automations…
+- [ManyChat Sending API](https://apis.io/apis/manychat/manychat-sending-api/) — Send Dynamic Block content and trigger automations for a subscriber across Messenger, Instagram and WhatsApp. 3 operations. This is the surface governed by…
+- [ManyChat Subscriber API](https://apis.io/apis/manychat/manychat-subscriber-api/) — Look up, search, create, update, tag and set custom field values on subscribers. 15 operations. A subscriber carries per-channel identity fields for…
+- [ManyChat Template API](https://apis.io/apis/manychat/manychat-template-api/) — White-label profile / template management (Profile API)
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### ManyChat REST API
+Event-driven and webhook contracts.
 
-REST API for managing subscribers, custom fields, tags, flows, and sending messages in ManyChat across Instagram, Messenger, WhatsApp, and SMS. Authentication uses an API Key generated from the page Settings to API screen, passed as a Bearer token in the Authorization header. Interactive documentation is available via Swagger.
+- [Manychat Dynamic Block Webhooks](https://apis.io/asyncapis/manychat/manychat-dynamic-block-webhooks/)
 
-- **Human URL:** [https://api.manychat.com/swagger](https://api.manychat.com/swagger)
-- **Base URL:** `https://api.manychat.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Chat Marketing
-- Messenger Marketing
-- Subscribers
-- Flows
-- Messaging
+- [Manychat Agentic Access](https://apis.io/agentic-access/manychat/manychat-agentic-access/)
 
-#### Properties
+#### Vocabulary (1)
 
-- [Documentation](https://api.manychat.com/swagger)
-- [Swagger](https://api.manychat.com/swagger)
-- [Authentication](https://help.manychat.com/hc/en-us/articles/14959510331420)
-- [Developer  Program](https://help.manychat.com/hc/en-us/articles/14281299586972)
-- [Postman Collection](collections/manychat.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manychat.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The provider's domain terms, defined.
 
-## Common Properties
+- [ManyChat Dynamic Block Vocabulary](https://apis.io/vocabularies/manychat/manychat-dynamic-block-vocabulary/)
 
-- [GitHub Organization](https://github.com/manychat)
-- [LinkedIn](https://www.linkedin.com/company/manychat)
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [ManyChat API](https://apis.io/collections/manychat/open-manychat/)
+- [ManyChat Page API](https://apis.io/collections/manychat/open-manychat-page-api/)
+- [ManyChat Profile API](https://apis.io/collections/manychat/open-manychat-profile-api/)
+- [ManyChat Sending API](https://apis.io/collections/manychat/open-manychat-sending-api/)
+- [ManyChat Subscriber API](https://apis.io/collections/manychat/open-manychat-subscriber-api/)
+
+#### Overlays (4)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Manychat Page Api Overlay](https://apis.io/overlays/manychat/manychat-page-api-overlay/)
+- [Manychat Profile Api Overlay](https://apis.io/overlays/manychat/manychat-profile-api-overlay/)
+- [Manychat Sending Api Overlay](https://apis.io/overlays/manychat/manychat-sending-api-overlay/)
+- [Manychat Subscriber Api Overlay](https://apis.io/overlays/manychat/manychat-subscriber-api-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Manychat Authentication](https://apis.io/security/manychat/manychat-authentication/)
+- [Manychat Domain Security](https://apis.io/security/manychat/manychat-domain-security/)
+- [Manychat Vulnerability Disclosure](https://apis.io/security/manychat/manychat-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Manychat Plans Pricing](https://apis.io/plans/manychat/manychat-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Manychat Rate Limits](https://apis.io/rate-limits/manychat/manychat-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://manychat.com)
 - [Documentation](https://api.manychat.com/swagger)
+- [Getting started](https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics)
+- [API reference](https://api.manychat.com/swagger)
 - [Pricing](https://manychat.com/pricing)
-- [Sign Up](https://manychat.com/signup)
-- [Help  Center](https://help.manychat.com)
+- [Sign up](https://manychat.com/signup)
+- [Support](https://help.manychat.com)
+- [Blog](https://manychat.com/blog/)
+- [Security](https://manychat.com/security/vulnerability)
+- [GitHub](https://github.com/manychat)
+- [Status](https://status.manychat.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 47.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 55.4 |
+| Contract governance | 19.7 |
+| Operational transparency | 60.5 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 23.7 |
+
+**Agent readiness 33.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 23.3** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/manychat/](https://apis.io/providers/manychat/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ManyChat: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/manychat/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
